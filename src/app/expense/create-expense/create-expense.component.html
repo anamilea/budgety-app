@@ -13,8 +13,7 @@
       <span> Data </span>
     </label>
     <mat-form-field>
-      <input matInput [matDatepicker]="picker" formControlName="date" 
-      (dateInput)="addDateEvent( $event)" (dateChange)="addDateEvent('$event)"
+      <input matInput [matDatepicker]="picker" formControlName="date"
        placeholder="Alege o dată">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
