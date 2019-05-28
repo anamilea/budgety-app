@@ -1,0 +1,37 @@
+<h1 mat-dialog-title>Cheltuială nouă</h1>
+<div class="form-fields">
+  <form [formGroup]="expenseForm" (ngSubmit)="saveExpense()">
+    <label for="name" class="enter-name">
+      <span> Denumire</span>
+    </label>
+    <input type="text" formControlName="name" placeholder="ex: Mancare">
+    <label for="price" class="enter-price">
+      <span> Suma cheltuită</span>
+    </label>
+    <input type="number" formControlName="price" placeholder="ex: 50">
+    <label for="date" class="enter-date">
+      <span> Data </span>
+    </label>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" formControlName="date" 
+      (dateInput)="addDateEvent( $event)" (dateChange)="addDateEvent('$event)"
+       placeholder="Alege o dată">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <div class="error">
+      <mat-error *ngIf="hasError()">{{getError()}}</mat-error>
+    </div>
+    <mat-dialog-actions>
+      <a (click)="close()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24">
+          <path fill="#fff"
+            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+          <path d="M0 0h24v24H0z" fill="none" />
+        </svg>
+      </a>
+      <button type=submit [disabled]="submittedForm">Salvează</button>
+      <button (click)="close()">Anulează</button>
+    </mat-dialog-actions>
+  </form>
+</div>
