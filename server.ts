@@ -24,7 +24,7 @@ class App {
 
     public config(): void {
         process.env.http_proxy = 'http://localhost:4200';
-        this.express.use(express.static(path.join(__dirname, '../public')));
+        this.express.use(express.static(path.join(__dirname, '../dist')));
         this.express.use(bodyParser.json());
         this.express.use(bodyParser.urlencoded({ extended: false }));
      //   this.express.use(expressSession({ secret: 'shh', resave: true, saveUninitialized: false }));
@@ -36,7 +36,7 @@ class App {
 
     public setRoutes(): void {
         this.express.get('/', (req, res) => {
-            res.sendFile(path.join(__dirname, '../public/index.html'));
+            res.sendFile(path.join(__dirname, '../dist/index.html'));
         });
     }
 
