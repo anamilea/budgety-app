@@ -14,7 +14,7 @@ async function connect(){
 connect();
 app.use(bodyParser.json());
 
-var distDir = __dirname + "/dis";
+var distDir = __dirname + "/dist";
 app.use(express.static(distDir));
 
 app.set('port', process.env.PORT || 5000);
