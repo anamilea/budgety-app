@@ -3,7 +3,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const http = require('http');
-const { Client } = require('pg');
 const api = require('./server/routes');
 
 app.use(bodyParser.json());
