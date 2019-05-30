@@ -17,7 +17,7 @@ app.use('/api', api);
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
-    res.sendFile('./public/index.html', { root: '.'});
+    res.sendFile(path.join(__dirname ,'public' , '/index.html'));
 });
 
 const port = process.env.PORT || '5000';
