@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //var distDir = __dirname + "/dist";
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 
 // Set our api routes
@@ -17,7 +17,7 @@ app.use('/api', api);
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
-  res.sendFile('./dist/index.html');
+    res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 const port = process.env.PORT || '5000';
