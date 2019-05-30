@@ -11,7 +11,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-
   "engines": {
     "node": "10.15.3",
     "npm": "6.4.1"
@@ -41,6 +40,7 @@
     "angular-6-social-login": "^1.1.1",
     "angular-font-awesome": "^3.1.2",
     "body-parser": "^1.19.0",
+    "concurrently": "^4.1.0",
     "core-js": "^2.5.4",
     "express": "^4.17.1",
     "font-awesome": "^4.7.0",
