@@ -12,12 +12,12 @@ async function connect(){
 connect();
 
 /* GET api listing. */
-router.get('/', (req, res) => {
+router.get('/xyz', (req, res) => {
   res.send('api works');
 });
 
 
-router.get('/api/users', function (req, res, next) {
+router.get('/users', function (req, res, next) {
     client.query('SELECT * FROM Users where id = $1', [1],function (err, result) {
         if (err) {
             console.log(err);
