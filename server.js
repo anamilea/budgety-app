@@ -4,14 +4,11 @@ const bodyParser = require('body-parser');
 const app = express();
 const http = require('http');
 const api = require('./server/routes.js');
-const serveStatic=require('serve-static');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-//var distDir = __dirname + "/dist";
 app.use(express.static(path.join(__dirname, './dist/dizertatie-app')));
-//app.use(express.static('./static.json'));
 
 // Set our api routes
 app.use('/api', api);
