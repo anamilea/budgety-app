@@ -17,14 +17,14 @@ router.get('/xyz', (req, res) => {
   res.send('api works');
 });
 
-router.post('/incoming', (req, res) => {
+router.get('/incoming', (req, res) => {
   var form = new formidable.IncomingForm()
   form.parse(req, function(err, fields, files) {
     console.log(fields.attachments['0'])
     console.log(fields.attachments['0']['file_name'])
     console.log(fields.attachments['0']['url'])
     res.writeHead(200, {'content-type': 'text/plain'})
-    res.end('Message Received. Thanks!\r\n')
+    res.send('Message Received. Thanks!\r\n')
   });
 });
 
