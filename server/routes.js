@@ -17,7 +17,7 @@ router.get('/xyz', (req, res) => {
   res.send('api works');
 });
 
-router.post('/incoming', function(req, res){
+router.post('/incoming', (req, res) => {
   var form = new formidable.IncomingForm()
   form.parse(req, function(err, fields, files) {
     console.log(fields.attachments['0'])
@@ -25,8 +25,8 @@ router.post('/incoming', function(req, res){
     console.log(fields.attachments['0']['url'])
     res.writeHead(200, {'content-type': 'text/plain'})
     res.end('Message Received. Thanks!\r\n')
-  })
-})
+  });
+});
 
 router.get('/users', function (req, res, next) {
     client.query('SELECT * FROM Users where id = $1', [1],function (err, result) {
