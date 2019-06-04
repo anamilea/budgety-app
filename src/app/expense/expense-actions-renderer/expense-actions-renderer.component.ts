@@ -40,7 +40,7 @@ export class ExpenseActionsRendererComponent  implements ICellRendererAngularCom
     });
   }
 
-  deleteExpense(node) {
+  deleteExpense() {
     const dialogRef = this.dialog.open(DeleteExpenseComponent, {
       minWidth: '100%',
       height: '100%',
