@@ -5,6 +5,7 @@ const app = express();
 const http = require('http');
 const api = require('./server/routes.js');
 
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -23,7 +24,4 @@ app.set('port', port);
 
 const server = http.createServer(app);
 
-
 server.listen(port, () => console.log(`API running, dirname is ${__dirname} `+ ` on localhost:${port}`));
-
-

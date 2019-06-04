@@ -32,6 +32,7 @@ import { ExpenseService } from './expense/expense.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { SnotifyModule, ToastDefaults, SnotifyService } from 'ng-snotify';
+import { AuthService } from './auth/auth.service';
 
 
 
@@ -92,6 +93,7 @@ export function getAuthServiceConfigs() {
   providers: [
     ExpenseService,
     SnotifyService,
+    AuthService,
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +14,9 @@ export class LoginComponent implements OnInit {
   //userCredentials: UserCredentials;
   errorMessage = '';
 
+
   constructor(
-    private _router: Router) { }
+    private _router: Router, private _authService: AuthService) { }
 
   ngOnInit() {
     // if (this._authService.isAuthenticated()) {
@@ -31,16 +33,9 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.isFormValid()) {
-      this._router.navigate(['']);
-      // this.userCredentials = this.loginForm.value;
-      // this._authService.login(this.userCredentials).subscribe(
-      //   res => {
-      //     this._authService.authenticateUser(res.token);
-      //   },
-      //   err => {
-      //     this.setErrorMessages(err);
-      //   }
-      // );
+
+    //  this._router.navigate(['']);
+     this._authService.login();
    }
   }
 

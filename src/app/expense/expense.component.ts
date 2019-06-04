@@ -3,6 +3,7 @@ import { ExpenseService } from './expense.service';
 import { MatDialog } from '@angular/material';
 import { ExpenseActionsRendererComponent } from './expense-actions-renderer/expense-actions-renderer.component';
 import { CreateExpenseComponent } from './create-expense/create-expense.component';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-expense',
@@ -16,17 +17,10 @@ export class ExpenseComponent implements OnInit {
   frameworkComponents;
   gridOptions;
 
-  constructor(private _expenseService : ExpenseService,
-    public dialog: MatDialog) {
+  constructor(private _expenseService : ExpenseService, public dialog: MatDialog, private _authService: AuthService) {
     this.columnDefs = [
-      { headerName: 'Name', field: 'name', width: 10 ,  filter: 'agTextColumnFilter'},
-      { headerName: 'Code', field: 'code', width: 10,  filter: 'agTextColumnFilter' },
-      { headerName: 'Status', field: 'status', width: 20, filter: 'agTextColumnFilter', filterParams: {
-          filterOptions: ['equals', 'notEqual'],
-          defaultOption: 'equals'
-        },
-        valueGetter: (params) => params.node.data.status ? 'Active' : 'Inactive'
-      },
+      { headerName: 'Valoare', field: 'value', width: 10 ,  filter: 'agTextColumnFilter'},
+      // { headerName: 'Code', field: 'code', width: 10,  filter: 'agTextColumnFilter' },
       { headerName: 'Actions', field: 'actions', width: 20, cellRenderer: 'actionsRenderer' }
     ];
     this.gridOptions = {
@@ -38,14 +32,20 @@ export class ExpenseComponent implements OnInit {
     this.frameworkComponents = {
       actionsRenderer: ExpenseActionsRendererComponent
     };
+   
+   
   }
 
   ngOnInit() {
-    this.setRowData();
+  this.setRowData();
+    this._expenseService.readExpenses(this._authService.userID).subscribe(res => {
+      console.log(res);
+    });
+   
   }
 
   setRowData() {
-    this._expenseService.readExpenses().subscribe(res => {
+    this._expenseService.readExpenses(this._authService.userID).subscribe(res => {
       this.rowData = res;
     });
   }
@@ -67,6 +67,6 @@ export class ExpenseComponent implements OnInit {
         this.gridApi.updateRowData({add: [result.expense]});
       }
     });
-  }
+ }
 
 }

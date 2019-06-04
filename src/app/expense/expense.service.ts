@@ -9,27 +9,29 @@ import { Expense } from '../models/expense.interface';
 export class ExpenseService {
     constructor(private _http: HttpClient) { }
    
-    createExpense(Expense: Expense): Observable<any> {
-        return this._http.post(`${environment}/expenses`, Expense).pipe(
+    createExpense(Expense: Expense, id: string): Observable<any> {
+        return this._http.post(`${environment.apiUri}/expenses/${id}`, Expense).pipe(
             catchError((err) => observableThrowError(err))
         );
     }
 
-    readExpenses(): Observable<any> {
-        return this._http.get(`${environment}/expenses`).pipe(
+    readExpenses(id: string): Observable<any> {
+    console.log("TCL: ExpenseService -> constructor -> id", id);
+        
+        return this._http.get(`${environment.apiUri}/expenses/${id}`).pipe(
             catchError((err) => observableThrowError(err))
         );
     }
 
 
-    updateExpense(Expense: Expense): Observable<any> {
-        return this._http.put(`${environment}/expenses`, Expense).pipe(
+    updateExpense(Expense: Expense, id: number): Observable<any> {
+        return this._http.put(`${environment.apiUri}/expenses/${id}`, Expense).pipe(
             catchError((err) => observableThrowError(err))
         );
     }
 
     deleteExpense(id: number): Observable<any> {
-        return this._http.delete(`${environment}/expenses/${id}`).pipe(
+        return this._http.delete(`${environment.apiUri}/expenses/${id}`).pipe(
             catchError((err) => observableThrowError(err))
         );
     }

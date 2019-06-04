@@ -11,7 +11,7 @@ import { EconomiesComponent } from './economies/economies.component';
 import { ReportsComponent } from './reports/reports.component';
 
 const routes: Routes = [
-  {path: '', component: HomepageComponent},
+  {path: 'success', component: HomepageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'expenses', component: ExpenseComponent},

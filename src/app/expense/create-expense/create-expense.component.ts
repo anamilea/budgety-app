@@ -37,9 +37,10 @@ export class CreateExpenseComponent implements OnInit {
 
   saveExpense() {
     if (this.isFormValid()) {
+      let id = 'ceva';
       this.submittedForm = true;
       let expense: Expense = this.expenseForm.value;
-      this._expenseService.createExpense(expense).subscribe(
+      this._expenseService.createExpense(expense, id).subscribe(
         res => {
           expense = res;
           this.dialogRef.close(

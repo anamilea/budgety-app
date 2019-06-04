@@ -1,7 +1,8 @@
 
 <div class="app">
 <button mat-raised-button (click)="newExpensePopUp()">Adaugă cheltuială</button>
-<ag-grid-angular domLayout="autoHeight" class="ag-theme-material" [enableSorting]="true" [enableFilter]="true" [rowData]="rowData"
+<ag-grid-angular domLayout="autoHeight" class="ag-theme-balham" sortable="true" filter="true" [rowData]="rowData"
     [columnDefs]="columnDefs" [suppressHorizontalScroll]="true" (gridReady)="onGridReady($event)" [frameworkComponents]="frameworkComponents">
 </ag-grid-angular>
 </div>
+<!-- <div>IT WORKS</div> -->
