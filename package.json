@@ -7,7 +7,7 @@
     "serve": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build --output-path=dist --configuration=production",
     "serve-api": "node server.js",
-    "postinstall": "ng build --prod ",
+    "postinstall": "ng build --prod --configuration=production",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
