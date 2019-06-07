@@ -38,7 +38,7 @@ router.get('/expenses/:id', (req, res) => {
     }
     
     res.status(200).send(result.rows);
-    console.log("TCL: esult.rows", esult.rows)
+    console.log("TCL: esult.rows", result.rows)
 });
 } );
 

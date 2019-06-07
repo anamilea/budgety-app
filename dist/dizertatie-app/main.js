@@ -300,6 +300,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var auth0_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! auth0-js */ "./node_modules/auth0-js/dist/auth0.min.esm.js");
+/* harmony import */ var src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/environments/environment.prod */ "./src/environments/environment.prod.ts");
+
 
 
 
@@ -311,7 +313,7 @@ var AuthService = /** @class */ (function () {
             clientID: 'uFINHhYMBik0xiEKH011FLKIFloyYsEW',
             domain: 'dawn-tree-5494.eu.auth0.com',
             responseType: 'token id_token',
-            redirectUri: 'http://localhost:4200/success',
+            redirectUri: src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_4__["environment"].apiUri + '/success',
             scope: 'openid'
         });
         this._idToken = '';
@@ -985,7 +987,7 @@ module.exports = "i {\n    cursor: pointer;\n    margin-right: 20px;\n}\n/*# sou
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <div>\n    <i class=\"glyphicon glyphicon-pencil\" (click)=\"editExpense()\"></i>\n    <i class=\"glyphicon glyphicon-trash\" (click)=\"deleteExpense()\"></i>\n</div> -->"
+module.exports = "<div>\n    <i class=\"glyphicon glyphicon-pencil\" (click)=\"editExpense()\"></i>\n    <i class=\"glyphicon glyphicon-trash\" (click)=\"deleteExpense()\"></i>\n</div>"
 
 /***/ }),
 
@@ -1034,7 +1036,7 @@ var ExpenseActionsRendererComponent = /** @class */ (function () {
             }
         });
     };
-    ExpenseActionsRendererComponent.prototype.deleteExpense = function (node) {
+    ExpenseActionsRendererComponent.prototype.deleteExpense = function () {
         var _this = this;
         var dialogRef = this.dialog.open(_delete_expense_delete_expense_component__WEBPACK_IMPORTED_MODULE_2__["DeleteExpenseComponent"], {
             minWidth: '100%',
@@ -1081,7 +1083,7 @@ module.exports = "button {\n    font-size: 20px;\n    margin-bottom: 5px;\n    c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- \n<div class=\"app\">\n<button mat-raised-button (click)=\"newExpensePopUp()\">Adaugă cheltuială</button>\n<ag-grid-angular domLayout=\"autoHeight\" class=\"ag-theme-material\" [enableSorting]=\"true\" [enableFilter]=\"true\" [rowData]=\"rowData\"\n    [columnDefs]=\"columnDefs\" [suppressHorizontalScroll]=\"true\" (gridReady)=\"onGridReady($event)\" [frameworkComponents]=\"frameworkComponents\">\n</ag-grid-angular>\n</div> -->\n<div>IT WORKS</div>"
+module.exports = "\n<div class=\"app\">\n<button mat-raised-button (click)=\"newExpensePopUp()\">Adaugă cheltuială</button>\n<ag-grid-angular domLayout=\"autoHeight\" class=\"ag-theme-balham\" sortable=\"true\" filter=\"true\" [rowData]=\"rowData\"\n    [columnDefs]=\"columnDefs\" [suppressHorizontalScroll]=\"true\" (gridReady)=\"onGridReady($event)\" [frameworkComponents]=\"frameworkComponents\">\n</ag-grid-angular>\n</div>\n<!-- <div>IT WORKS</div> -->"
 
 /***/ }),
 
@@ -1099,7 +1101,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _expense_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./expense.service */ "./src/app/expense/expense.service.ts");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _auth_auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../auth/auth.service */ "./src/app/auth/auth.service.ts");
+/* harmony import */ var _expense_actions_renderer_expense_actions_renderer_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./expense-actions-renderer/expense-actions-renderer.component */ "./src/app/expense/expense-actions-renderer/expense-actions-renderer.component.ts");
+/* harmony import */ var _create_expense_create_expense_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./create-expense/create-expense.component */ "./src/app/expense/create-expense/create-expense.component.ts");
+/* harmony import */ var _auth_auth_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../auth/auth.service */ "./src/app/auth/auth.service.ts");
+
+
 
 
 
@@ -1107,29 +1113,53 @@ __webpack_require__.r(__webpack_exports__);
 
 var ExpenseComponent = /** @class */ (function () {
     function ExpenseComponent(_expenseService, dialog, _authService) {
-        // this.columnDefs = [
-        //   { headerName: 'Valoare', field: 'name', width: 10 ,  filter: 'agTextColumnFilter'},
-        //   { headerName: 'Code', field: 'code', width: 10,  filter: 'agTextColumnFilter' },
-        //   { headerName: 'Actions', field: 'actions', width: 20, cellRenderer: 'actionsRenderer' }
-        // ];
-        // this.gridOptions = {
-        //   columnDefs: this.columnDefs,
-        //   enableFilter: true,
-        //   enableSorting: true,
-        //   pagination: true
-        // };
-        // this.frameworkComponents = {
-        //   actionsRenderer: ExpenseActionsRendererComponent
-        // };
         this._expenseService = _expenseService;
         this.dialog = dialog;
         this._authService = _authService;
         this.rowData = [];
+        this.columnDefs = [
+            { headerName: 'Valoare', field: 'value', width: 10, filter: 'agTextColumnFilter' },
+            // { headerName: 'Code', field: 'code', width: 10,  filter: 'agTextColumnFilter' },
+            { headerName: 'Actions', field: 'actions', width: 20, cellRenderer: 'actionsRenderer' }
+        ];
+        this.gridOptions = {
+            columnDefs: this.columnDefs,
+            enableFilter: true,
+            enableSorting: true,
+            pagination: true
+        };
+        this.frameworkComponents = {
+            actionsRenderer: _expense_actions_renderer_expense_actions_renderer_component__WEBPACK_IMPORTED_MODULE_4__["ExpenseActionsRendererComponent"]
+        };
     }
     ExpenseComponent.prototype.ngOnInit = function () {
-        // this.setRowData();
+        this.setRowData();
         this._expenseService.readExpenses(this._authService.userID).subscribe(function (res) {
             console.log(res);
+        });
+    };
+    ExpenseComponent.prototype.setRowData = function () {
+        var _this = this;
+        this._expenseService.readExpenses(this._authService.userID).subscribe(function (res) {
+            _this.rowData = res;
+        });
+    };
+    ExpenseComponent.prototype.onGridReady = function (params) {
+        this.gridApi = params.api;
+        this.gridApi.sizeColumnsToFit();
+    };
+    ExpenseComponent.prototype.newExpensePopUp = function () {
+        var _this = this;
+        var dialogRef = this.dialog.open(_create_expense_create_expense_component__WEBPACK_IMPORTED_MODULE_5__["CreateExpenseComponent"], {
+            autoFocus: false,
+            disableClose: true,
+            minWidth: '50%',
+            height: '50%'
+        });
+        dialogRef.afterClosed().subscribe(function (result) {
+            if (result) {
+                _this.gridApi.updateRowData({ add: [result.expense] });
+            }
         });
     };
     ExpenseComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1138,7 +1168,7 @@ var ExpenseComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./expense.component.html */ "./src/app/expense/expense.component.html"),
             styles: [__webpack_require__(/*! ./expense.component.css */ "./src/app/expense/expense.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_expense_service__WEBPACK_IMPORTED_MODULE_2__["ExpenseService"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialog"], _auth_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_expense_service__WEBPACK_IMPORTED_MODULE_2__["ExpenseService"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialog"], _auth_auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"]])
     ], ExpenseComponent);
     return ExpenseComponent;
 }());
@@ -1174,17 +1204,17 @@ var ExpenseService = /** @class */ (function () {
         this._http = _http;
     }
     ExpenseService.prototype.createExpense = function (Expense, id) {
-        return this._http.post(src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].redirectUri + "/expenses/" + id, Expense).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(err); }));
+        return this._http.post(src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].apiUri + "/expenses/" + id, Expense).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(err); }));
     };
     ExpenseService.prototype.readExpenses = function (id) {
         console.log("TCL: ExpenseService -> constructor -> id", id);
-        return this._http.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].redirectUri + "/expenses/" + id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(err); }));
+        return this._http.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].apiUri + "/expenses/" + id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(err); }));
     };
     ExpenseService.prototype.updateExpense = function (Expense, id) {
-        return this._http.put(src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].redirectUri + "/expenses/" + id, Expense).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(err); }));
+        return this._http.put(src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].apiUri + "/expenses/" + id, Expense).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(err); }));
     };
     ExpenseService.prototype.deleteExpense = function (id) {
-        return this._http.delete(src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].redirectUri + "/expenses/" + id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(err); }));
+        return this._http.delete(src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].apiUri + "/expenses/" + id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(err); }));
     };
     ExpenseService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
@@ -1588,6 +1618,24 @@ var ReportsComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/environments/environment.prod.ts":
+/*!**********************************************!*\
+  !*** ./src/environments/environment.prod.ts ***!
+  \**********************************************/
+/*! exports provided: environment */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "environment", function() { return environment; });
+var environment = {
+    production: true,
+    apiUri: 'http://budgety-app-dizertatie.herokuapp.com',
+};
+
+
+/***/ }),
+
 /***/ "./src/environments/environment.ts":
 /*!*****************************************!*\
   !*** ./src/environments/environment.ts ***!
@@ -1603,7 +1651,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 var environment = {
     production: false,
-    redirectUri: 'localhost:4200'
+    apiUri: 'http://localhost:5000'
 };
 /*
  * For easier debugging in development mode, you can import the following file
