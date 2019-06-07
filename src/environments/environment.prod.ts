@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUri: 'http://budgety-app-dizertatie.herokuapp.com/',
+  apiUri: 'http://budgety-app-dizertatie.herokuapp.com',
 };
