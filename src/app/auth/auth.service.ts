@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import * as auth0 from 'auth0-js';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class AuthService {
     clientID: 'uFINHhYMBik0xiEKH011FLKIFloyYsEW',
     domain: 'dawn-tree-5494.eu.auth0.com',
     responseType: 'token id_token',
-    redirectUri: 'http://localhost:4200/success',
+    redirectUri: environment.apiUri + '/success',
     scope: 'openid'
   });
 
