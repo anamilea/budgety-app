@@ -37,15 +37,12 @@ export class ExpenseComponent implements OnInit {
   }
 
   ngOnInit() {
-  this.setRowData();
-    this._expenseService.readExpenses(this._authService.userID).subscribe(res => {
-      console.log(res);
-    });
-   
+    this.setRowData();
   }
 
   setRowData() {
     this._expenseService.readExpenses(this._authService.userID).subscribe(res => {
+      console.log(res);
       this.rowData = res;
     });
   }
