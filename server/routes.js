@@ -28,8 +28,6 @@ router.get('/users', function (req, res, next) {
 });
 
 router.get('/expenses/:id', (req, res) => {
-//onsole.log("TCL: req", req)
-  
   console.log(req.params.id, '!!!!');
   client.query('SELECT * FROM Expenses where user_id = $1', [req.params.id],function (err, result) {
     if (err) {
@@ -42,14 +40,5 @@ router.get('/expenses/:id', (req, res) => {
 });
 } );
 
-// router.get('/expenses', (req, res) => {
-//   client.query('SELECT * FROM Expenses where id = $1', [1],function (err, result) {
-//     if (err) {
-//         console.log(err);
-//         res.status(400).send(err);
-//     }
-//     res.status(200).send(result.rows);
-// });
-// });
 
 module.exports = router;

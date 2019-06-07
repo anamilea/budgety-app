@@ -18,7 +18,7 @@ export class ExpenseService {
     readExpenses(id: string): Observable<any> {
     console.log("TCL: ExpenseService -> constructor -> id", id);
         
-        return this._http.get(`${environment.apiUri}/expenses/${id}`).pipe(
+        return this._http.get(`${environment.apiUri}/api/expenses/${id}`).pipe(
             catchError((err) => observableThrowError(err))
         );
     }
