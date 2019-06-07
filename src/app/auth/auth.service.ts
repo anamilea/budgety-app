@@ -17,7 +17,7 @@ export class AuthService {
     clientID: 'uFINHhYMBik0xiEKH011FLKIFloyYsEW',
     domain: 'dawn-tree-5494.eu.auth0.com',
     responseType: 'token id_token',
-    redirectUri: `${environment.apiUri}/success`,
+    redirectUri: environment.apiUri + '/success',
     scope: 'openid'
   });
 
@@ -41,18 +41,7 @@ export class AuthService {
   }
 
   public login(): void {
-    this.auth0.popup.authorize(
-      {
-        redirectUri: `${environment.apiUri}/success`,
-        clientId: `FINHhYMBik0xiEKH011FLKIFloyYsEW`,
-        domain: 'dawn-tree-5494.eu.auth0.com',
-        responseType: 'token id_token',
-        scope: 'openid',
-        connection: 'google'
-      },
-      (err, response) => {
-        console.log({err}, {response});
-    });
+    this.auth0.authorize();
   }
 
   public handleAuthentication() {
@@ -60,7 +49,6 @@ export class AuthService {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         this.localLogin(authResult);
-      //  console.log("TCL: AuthService -> authResult", authResult);
         this.router.navigate(['/expenses']);
       } else if (err) {
         console.log(err);

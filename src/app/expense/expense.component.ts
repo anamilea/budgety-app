@@ -18,6 +18,7 @@ export class ExpenseComponent implements OnInit {
   gridOptions;
 
   constructor(private _expenseService : ExpenseService, public dialog: MatDialog, private _authService: AuthService) {
+    console.log('ALO');
     this.columnDefs = [
       { headerName: 'Valoare', field: 'value', width: 10 ,  filter: 'agTextColumnFilter'},
       // { headerName: 'Code', field: 'code', width: 10,  filter: 'agTextColumnFilter' },
@@ -37,6 +38,7 @@ export class ExpenseComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('here');
     this.setRowData();
   }
 
