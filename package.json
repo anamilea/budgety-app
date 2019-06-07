@@ -7,7 +7,7 @@
     "serve": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build --output-path=dist",
     "serve-api": "node server.js",
-    "postinstall": "ng build --target production --build-optimizer --vendor-chunk",
+    "postinstall": "ng build --prod --build-optimizer --vendor-chunk=true",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
