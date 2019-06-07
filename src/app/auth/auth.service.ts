@@ -17,7 +17,7 @@ export class AuthService {
     clientID: 'uFINHhYMBik0xiEKH011FLKIFloyYsEW',
     domain: 'dawn-tree-5494.eu.auth0.com',
     responseType: 'token id_token',
-    redirectUri: environment.apiUri + '/success',
+    redirectUri: environment.apiUri + 'success',
     scope: 'openid'
   });
 
