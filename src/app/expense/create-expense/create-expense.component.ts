@@ -6,6 +6,7 @@ import { SnotifyService } from 'ng-snotify';
 import { Expense } from 'src/app/models/expense.interface';
 import { ExpenseService } from '../expense.service';
 import { ExpenseComponent } from '../expense.component';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-create-expense',
@@ -21,7 +22,10 @@ export class CreateExpenseComponent implements OnInit {
   constructor(private _expenseService: ExpenseService,
     public snotify: SnotifyService,
     public dialogRef: MatDialogRef<ExpenseComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private _authService: AuthService) { 
+
+    }
 
   ngOnInit() {
     this.expenseForm = new FormGroup({
@@ -37,10 +41,9 @@ export class CreateExpenseComponent implements OnInit {
 
   saveExpense() {
     if (this.isFormValid()) {
-      let id = 'ceva';
       this.submittedForm = true;
       let expense: Expense = this.expenseForm.value;
-      this._expenseService.createExpense(expense, id).subscribe(
+      this._expenseService.createExpense(expense, this._authService.userID).subscribe(
         res => {
           expense = res;
           this.dialogRef.close(
@@ -56,14 +59,8 @@ export class CreateExpenseComponent implements OnInit {
   }
 
   setErrorMessages(err: any) {
-    if (String(err.error).includes('UNIQUE KEY')) {
-      this.submittedForm = false;
-      this.errorMessage = 'Expense price already exists.';
-      this.expenseForm.setErrors({ wrong: true });
-    } else {
       this.dialogRef.close();
       this.snotify.error('The server encountered an error while processing the request.');
-    }
   }
 
   close() {
