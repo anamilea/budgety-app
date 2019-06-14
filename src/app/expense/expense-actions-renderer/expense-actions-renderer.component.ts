@@ -28,13 +28,17 @@ export class ExpenseActionsRendererComponent  implements ICellRendererAngularCom
 
   editExpense() {
     const dialogRef = this.dialog.open(EditExpenseComponent, {
-      minWidth: '100%',
-      height: '100%',
+      autoFocus: false,
+      disableClose: true,
+      minWidth: '50%',
+      height: '50%',
       data: {
         expense: this.params.node.data
       }
     }).afterClosed().subscribe(res => {
+     
       if (res) {
+        res.id = this.params.node.data.id;
         this.params.node.setData(res);
       }
     });
@@ -42,13 +46,16 @@ export class ExpenseActionsRendererComponent  implements ICellRendererAngularCom
 
   deleteExpense() {
     const dialogRef = this.dialog.open(DeleteExpenseComponent, {
-      minWidth: '100%',
-      height: '100%',
+      autoFocus: false,
+      disableClose: true,
+      minWidth: '50%',
+      height: '50%',
       data: {
         expense: this.params.node.data
       }
     }).afterClosed().subscribe(res => {
       if (res) {
+        res.id = this.params.node.data.id;
         this.gridApi.updateRowData({ remove: [res] });
       }
     });

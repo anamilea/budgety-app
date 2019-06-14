@@ -30,35 +30,16 @@ import { EditExpenseComponent } from './expense/edit-expense/edit-expense.compon
 import { AgGridModule } from 'ag-grid-angular';
 import { ExpenseService } from './expense/expense.service';
 import { HttpClientModule } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { SnotifyModule, ToastDefaults, SnotifyService } from 'ng-snotify';
 import { AuthService } from './auth/auth.service';
 
 
-
-// Configs 
-export function getAuthServiceConfigs() {
-  let config = new AuthServiceConfig(
-    [
-      {
-        id: FacebookLoginProvider.PROVIDER_ID,
-        provider: new FacebookLoginProvider("Your-Facebook-app-id")
-      },
-      {
-        id: GoogleLoginProvider.PROVIDER_ID,
-        provider: new GoogleLoginProvider("Your-Google-Client-Id")
-      },
-      {
-        id: LinkedinLoginProvider.PROVIDER_ID,
-        provider: new LinkedinLoginProvider("1098828800522-m2ig6bieilc3tpqvmlcpdvrpvn86q4ks.apps.googleusercontent.com")
-      },
-    ]);
-  return config;
-}
-//lalala
 @NgModule({
   entryComponents:[
-    CreateExpenseComponent
+    CreateExpenseComponent,
+    EditExpenseComponent,
+    DeleteExpenseComponent
   ],
   declarations: [
     AppComponent,
@@ -94,10 +75,7 @@ export function getAuthServiceConfigs() {
     ExpenseService,
     SnotifyService,
     AuthService,
-    {
-      provide: AuthServiceConfig,
-      useFactory: getAuthServiceConfigs
-    },
+    DatePipe,
     { 
       provide: 'SnotifyToastConfig', useValue: ToastDefaults
     }

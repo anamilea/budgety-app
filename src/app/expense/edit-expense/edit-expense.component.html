@@ -1,32 +1,20 @@
-<!-- <h1 mat-dialog-title>Edit language</h1>
+<h1 mat-dialog-title>Editare cheltuială</h1>
 <div class="form-fields">
-  <form [formGroup]="languageForm" (ngSubmit)="saveLanguageUpdates()">
+  <form [formGroup]="expenseForm" (ngSubmit)="saveExpenseUpdates()">
     <label  class="required" for="name">
-      <span>Language name</span>
+      <span>Denumire</span>
     </label>
     <input matInput formControlName="name" placeholder="Name">
-    <label class="required" for="code">
-      <span>Language code</span>
+    <label class="required" for="value">
+      <span>Valoare (RON)</span>
     </label>
-    <input matInput formControlName="code" placeholder="Code">
-    <label for="status">
-      <span>Language status</span>
-    </label>
-    <mat-select class="select" disableOptionCentering formControlName="status" placeholder="Status">
-      <mat-option [value]="0" [disabled]="data.language.status === 0">Inactive</mat-option>
-      <mat-option [value]="1" [disabled]="data.language.status === 1">Active</mat-option>
-    </mat-select>
+    <input matInput formControlName="value" placeholder="Valoare">  
     <div class="error">
       <mat-error *ngIf="hasError()">{{getError()}}</mat-error>
     </div>
     <mat-dialog-actions>
-      <a (click)="closeDialog()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24">
-          <path fill="#fff" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-          <path d="M0 0h24v24H0z" fill="none" />
-        </svg>
-      </a>
-      <button type=submit [disabled]="submittedForm">Save</button>
+      <button type=submit [disabled]="submittedForm">Salvează</button>
+      <button (click)="close()">Anulează</button>
     </mat-dialog-actions>
   </form>
-</div> -->
+</div>

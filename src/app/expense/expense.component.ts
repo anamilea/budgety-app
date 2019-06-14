@@ -4,6 +4,8 @@ import { MatDialog } from '@angular/material';
 import { ExpenseActionsRendererComponent } from './expense-actions-renderer/expense-actions-renderer.component';
 import { CreateExpenseComponent } from './create-expense/create-expense.component';
 import { AuthService } from '../auth/auth.service';
+import { DatePipe } from '@angular/common';
+import { Expense } from '../models/expense.interface';
 
 @Component({
   selector: 'app-expense',
@@ -12,17 +14,20 @@ import { AuthService } from '../auth/auth.service';
 })
 export class ExpenseComponent implements OnInit {
   columnDefs;
-  rowData = [];
+  rowData : any;
   gridApi;
   frameworkComponents;
   gridOptions;
 
-  constructor(private _expenseService : ExpenseService, public dialog: MatDialog, private _authService: AuthService) {
-    console.log('ALO');
+  constructor(private _expenseService : ExpenseService, public dialog: MatDialog, private _authService: AuthService,
+    public datePipe: DatePipe) {
     this.columnDefs = [
-      { headerName: 'Valoare', field: 'value', width: 10 ,  filter: 'agTextColumnFilter'},
-      // { headerName: 'Code', field: 'code', width: 10,  filter: 'agTextColumnFilter' },
-      { headerName: 'Actions', field: 'actions', width: 20, cellRenderer: 'actionsRenderer' }
+      { headerName: 'Denumire', field: 'name' ,  filter: 'agTextColumnFilter', sortable: true},
+      { headerName: 'Valoare (RON)', field: 'value', filter: 'agNumberColumnFilter', sortable: true},
+      { headerName: 'Data', field: 'date',  filter: 'agDateColumnFilter', sortable: true},
+      {headerName: 'Categorie', field: 'category',filter: 'agTextColumnFilter', sortable: true},
+      { headerName: 'Acțiuni', field: 'actions', cellRenderer: 'actionsRenderer' }
+      
     ];
     this.gridOptions = {
       columnDefs: this.columnDefs,
@@ -33,19 +38,15 @@ export class ExpenseComponent implements OnInit {
     this.frameworkComponents = {
       actionsRenderer: ExpenseActionsRendererComponent
     };
-   
-   
   }
 
   ngOnInit() {
-    console.log('here');
     this.setRowData();
   }
 
   setRowData() {
     this._expenseService.readExpenses(this._authService.userID).subscribe(res => {
-      console.log(res);
-      this.rowData = res;
+    this.rowData = res;
     });
   }
 
@@ -61,9 +62,14 @@ export class ExpenseComponent implements OnInit {
       minWidth: '50%',
       height: '50%'
     });
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.gridApi.updateRowData({add: [result.expense]});
+    dialogRef.afterClosed().subscribe(res => {
+      if (res) {
+      console.log("TCL: ExpenseComponent -> res", res);
+
+    let expense : Expense = res.expense[0];
+      expense.date = this.datePipe.transform(expense.date, 'dd MMM, yyyy');
+      expense.category = res.expense.category;
+        this.gridApi.updateRowData({add: [expense]});
       }
     });
  }

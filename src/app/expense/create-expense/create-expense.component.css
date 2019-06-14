@@ -5,8 +5,6 @@ input.ng-invalid.ng-touched:not(:focus) {
   border-radius: 0;
 }
 
-
-
 .error {
   text-align: left;
   font-size: 10px;

@@ -18,6 +18,8 @@ export class CreateExpenseComponent implements OnInit {
   errorMessage = '';
   expenseForm: FormGroup;
   submittedForm = false;
+  categories : any[];
+  isVisible = false;
 
   constructor(private _expenseService: ExpenseService,
     public snotify: SnotifyService,
@@ -31,24 +33,40 @@ export class CreateExpenseComponent implements OnInit {
     this.expenseForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
       price: new FormControl('', [Validators.required]),
-      date:  new FormControl('', [Validators.required])
+      date:  new FormControl('', [Validators.required]),
+      category: new FormControl('',[])
     });
+    this.categories = [ 
+      { name : 'Mâncare'},
+      { name : 'Cumpărături'},
+      { name : 'Haine'},
+      { name : 'Pentru casă'},
+      { name : 'Cadouri'},
+      { name : 'Mașină'},
+      {name: 'Altele'}
+    ]
   }
 
   get name() { return this.expenseForm.get('name'); }
   get price() { return this.expenseForm.get('price'); }
   get date() { return this.expenseForm.get('date'); }
+  get category() { return this.expenseForm.get('category');}
+
+  showExpenseDetails() {
+    this.isVisible = !this.isVisible;
+  }
 
   saveExpense() {
     if (this.isFormValid()) {
       this.submittedForm = true;
-      let expense: Expense = this.expenseForm.value;
+      
+      let expense: Expense = this.expenseForm.value; 
+    
       this._expenseService.createExpense(expense, this._authService.userID).subscribe(
         res => {
-          expense = res;
-          this.dialogRef.close(
-            { expense: expense }
-          );
+          expense = res;       
+          expense.category = this.expenseForm.get('category').value;
+          this.dialogRef.close({ expense: expense});
           this.snotify.success('Expense ' + expense.name + ' was successfully created.');
         },
         err => {

@@ -9,30 +9,30 @@ import { Expense } from '../models/expense.interface';
 export class ExpenseService {
     constructor(private _http: HttpClient) { }
    
-    createExpense(Expense: Expense, id: string): Observable<any> {
-        return this._http.post(`${environment.apiUri}/expenses/${id}`, Expense).pipe(
+    createExpense(expense: Expense, id: string): Observable<any> {
+        id = 'auth0|5cffd2df7a541c0d42e41522';
+        return this._http.post(`${environment.apiUri}/api/expenses/${id}`, expense).pipe(
             catchError((err) => observableThrowError(err))
         );
     }
 
     readExpenses(id: string): Observable<any> {
-        console.log(`${environment.apiUri}/api/expenses/${id}`);
-        console.log(id);
-        
+      
+        id = 'auth0|5cffd2df7a541c0d42e41522';
         return this._http.get(`${environment.apiUri}/api/expenses/${id}`).pipe(
             catchError((err) => observableThrowError(err))
         );
     }
 
 
-    updateExpense(Expense: Expense, id: number): Observable<any> {
-        return this._http.put(`${environment.apiUri}/expenses/${id}`, Expense).pipe(
+    updateExpense(expense: Expense, id: string): Observable<any> {
+        return this._http.put(`${environment.apiUri}/api/expenses/${id}`, expense).pipe(
             catchError((err) => observableThrowError(err))
         );
     }
 
-    deleteExpense(id: number): Observable<any> {
-        return this._http.delete(`${environment.apiUri}/expenses/${id}`).pipe(
+    deleteExpense(id: string): Observable<any> {
+        return this._http.delete(`${environment.apiUri}/api/expenses/${id}`).pipe(
             catchError((err) => observableThrowError(err))
         );
     }
