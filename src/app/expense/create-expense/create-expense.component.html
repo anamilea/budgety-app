@@ -29,6 +29,14 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
+    <mat-form-field *ngIf="isVisible">
+      <mat-label>Persoane</mat-label>
+      <mat-select  formControlName="people" multiple>
+        <mat-option  *ngFor="let people of peopleData" [value]="people.name" multi>
+          {{people.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
     <div class="error">
       <mat-error *ngIf="hasError()">{{getError()}}</mat-error>
     </div>

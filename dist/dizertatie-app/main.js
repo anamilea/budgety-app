@@ -140,12 +140,11 @@ var AppComponent = /** @class */ (function () {
 /*!*******************************!*\
   !*** ./src/app/app.module.ts ***!
   \*******************************/
-/*! exports provided: getAuthServiceConfigs, AppModule */
+/*! exports provided: AppModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAuthServiceConfigs", function() { return getAuthServiceConfigs; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
@@ -155,8 +154,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _material_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./material.module */ "./src/app/material.module.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var angular_6_social_login__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! angular-6-social-login */ "./node_modules/angular-6-social-login/angular-6-social-login.umd.js");
-/* harmony import */ var angular_6_social_login__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(angular_6_social_login__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var highcharts_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! highcharts-angular */ "./node_modules/highcharts-angular/fesm5/highcharts-angular.js");
 /* harmony import */ var _auth_login_login_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./auth/login/login.component */ "./src/app/auth/login/login.component.ts");
 /* harmony import */ var _expense_expense_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./expense/expense.component */ "./src/app/expense/expense.component.ts");
 /* harmony import */ var _homepage_homepage_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./homepage/homepage.component */ "./src/app/homepage/homepage.component.ts");
@@ -207,32 +205,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// Configs 
-function getAuthServiceConfigs() {
-    var config = new angular_6_social_login__WEBPACK_IMPORTED_MODULE_8__["AuthServiceConfig"]([
-        {
-            id: angular_6_social_login__WEBPACK_IMPORTED_MODULE_8__["FacebookLoginProvider"].PROVIDER_ID,
-            provider: new angular_6_social_login__WEBPACK_IMPORTED_MODULE_8__["FacebookLoginProvider"]("Your-Facebook-app-id")
-        },
-        {
-            id: angular_6_social_login__WEBPACK_IMPORTED_MODULE_8__["GoogleLoginProvider"].PROVIDER_ID,
-            provider: new angular_6_social_login__WEBPACK_IMPORTED_MODULE_8__["GoogleLoginProvider"]("Your-Google-Client-Id")
-        },
-        {
-            id: angular_6_social_login__WEBPACK_IMPORTED_MODULE_8__["LinkedinLoginProvider"].PROVIDER_ID,
-            provider: new angular_6_social_login__WEBPACK_IMPORTED_MODULE_8__["LinkedinLoginProvider"]("1098828800522-m2ig6bieilc3tpqvmlcpdvrpvn86q4ks.apps.googleusercontent.com")
-        },
-    ]);
-    return config;
-}
-//lalala
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             entryComponents: [
-                _expense_create_expense_create_expense_component__WEBPACK_IMPORTED_MODULE_20__["CreateExpenseComponent"]
+                _expense_create_expense_create_expense_component__WEBPACK_IMPORTED_MODULE_20__["CreateExpenseComponent"],
+                _expense_edit_expense_edit_expense_component__WEBPACK_IMPORTED_MODULE_22__["EditExpenseComponent"],
+                _expense_delete_expense_delete_expense_component__WEBPACK_IMPORTED_MODULE_21__["DeleteExpenseComponent"]
             ],
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
@@ -249,6 +230,7 @@ var AppModule = /** @class */ (function () {
                 _expense_expense_actions_renderer_expense_actions_renderer_component__WEBPACK_IMPORTED_MODULE_19__["ExpenseActionsRendererComponent"],
                 _expense_create_expense_create_expense_component__WEBPACK_IMPORTED_MODULE_20__["CreateExpenseComponent"],
                 _expense_delete_expense_delete_expense_component__WEBPACK_IMPORTED_MODULE_21__["DeleteExpenseComponent"],
+                highcharts_angular__WEBPACK_IMPORTED_MODULE_8__["HighchartsChartComponent"],
                 _expense_edit_expense_edit_expense_component__WEBPACK_IMPORTED_MODULE_22__["EditExpenseComponent"]
             ],
             imports: [
@@ -260,7 +242,6 @@ var AppModule = /** @class */ (function () {
                 _material_module__WEBPACK_IMPORTED_MODULE_6__["MaterialModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_7__["ReactiveFormsModule"],
-                angular_6_social_login__WEBPACK_IMPORTED_MODULE_8__["SocialLoginModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
                 ag_grid_angular__WEBPACK_IMPORTED_MODULE_23__["AgGridModule"].withComponents([_expense_expense_actions_renderer_expense_actions_renderer_component__WEBPACK_IMPORTED_MODULE_19__["ExpenseActionsRendererComponent"]])
             ],
@@ -268,10 +249,7 @@ var AppModule = /** @class */ (function () {
                 _expense_expense_service__WEBPACK_IMPORTED_MODULE_24__["ExpenseService"],
                 ng_snotify__WEBPACK_IMPORTED_MODULE_27__["SnotifyService"],
                 _auth_auth_service__WEBPACK_IMPORTED_MODULE_28__["AuthService"],
-                {
-                    provide: angular_6_social_login__WEBPACK_IMPORTED_MODULE_8__["AuthServiceConfig"],
-                    useFactory: getAuthServiceConfigs
-                },
+                _angular_common__WEBPACK_IMPORTED_MODULE_26__["DatePipe"],
                 {
                     provide: 'SnotifyToastConfig', useValue: ng_snotify__WEBPACK_IMPORTED_MODULE_27__["ToastDefaults"]
                 }
@@ -351,11 +329,9 @@ var AuthService = /** @class */ (function () {
             if (authResult && authResult.accessToken && authResult.idToken) {
                 window.location.hash = '';
                 _this.localLogin(authResult);
-                //  console.log("TCL: AuthService -> authResult", authResult);
                 _this.router.navigate(['/expenses']);
             }
             else if (err) {
-                _this.router.navigate(['/expenses']);
                 console.log(err);
             }
         });
@@ -366,7 +342,6 @@ var AuthService = /** @class */ (function () {
         this._accessToken = authResult.accessToken;
         this._idToken = authResult.idToken;
         this._userID = authResult.idTokenPayload.sub;
-        console.log("TCL: AuthService ->  this._userID", this._userID);
         this._expiresAt = expiresAt;
     };
     AuthService.prototype.renewTokens = function () {
@@ -721,7 +696,7 @@ var EconomiesComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\ninput.ng-invalid.ng-touched:not(:focus) {\n  outline: none;\n  border: 1px solid #E60000;\n  border-radius: 0;\n}\n\n\n\n.error {\n  text-align: left;\n  font-size: 10px;\n  height: 15px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZXhwZW5zZS9jcmVhdGUtZXhwZW5zZS9jcmVhdGUtZXhwZW5zZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtFQUNFLGFBQWE7RUFDYix5QkFBeUI7RUFDekIsZ0JBQWdCO0FBQ2xCOzs7O0FBSUE7RUFDRSxnQkFBZ0I7RUFDaEIsZUFBZTtFQUNmLFlBQVk7QUFDZCIsImZpbGUiOiJzcmMvYXBwL2V4cGVuc2UvY3JlYXRlLWV4cGVuc2UvY3JlYXRlLWV4cGVuc2UuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxuaW5wdXQubmctaW52YWxpZC5uZy10b3VjaGVkOm5vdCg6Zm9jdXMpIHtcbiAgb3V0bGluZTogbm9uZTtcbiAgYm9yZGVyOiAxcHggc29saWQgI0U2MDAwMDtcbiAgYm9yZGVyLXJhZGl1czogMDtcbn1cblxuXG5cbi5lcnJvciB7XG4gIHRleHQtYWxpZ246IGxlZnQ7XG4gIGZvbnQtc2l6ZTogMTBweDtcbiAgaGVpZ2h0OiAxNXB4O1xufSJdfQ== */"
+module.exports = "\ninput.ng-invalid.ng-touched:not(:focus) {\n  outline: none;\n  border: 1px solid #E60000;\n  border-radius: 0;\n}\n\n.error {\n  text-align: left;\n  font-size: 10px;\n  height: 15px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZXhwZW5zZS9jcmVhdGUtZXhwZW5zZS9jcmVhdGUtZXhwZW5zZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtFQUNFLGFBQWE7RUFDYix5QkFBeUI7RUFDekIsZ0JBQWdCO0FBQ2xCOztBQUVBO0VBQ0UsZ0JBQWdCO0VBQ2hCLGVBQWU7RUFDZixZQUFZO0FBQ2QiLCJmaWxlIjoic3JjL2FwcC9leHBlbnNlL2NyZWF0ZS1leHBlbnNlL2NyZWF0ZS1leHBlbnNlLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbmlucHV0Lm5nLWludmFsaWQubmctdG91Y2hlZDpub3QoOmZvY3VzKSB7XG4gIG91dGxpbmU6IG5vbmU7XG4gIGJvcmRlcjogMXB4IHNvbGlkICNFNjAwMDA7XG4gIGJvcmRlci1yYWRpdXM6IDA7XG59XG5cbi5lcnJvciB7XG4gIHRleHQtYWxpZ246IGxlZnQ7XG4gIGZvbnQtc2l6ZTogMTBweDtcbiAgaGVpZ2h0OiAxNXB4O1xufSJdfQ== */"
 
 /***/ }),
 
@@ -732,7 +707,7 @@ module.exports = "\ninput.ng-invalid.ng-touched:not(:focus) {\n  outline: none;\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1 mat-dialog-title>Cheltuială nouă</h1>\n<div class=\"form-fields\">\n  <form [formGroup]=\"expenseForm\" (ngSubmit)=\"saveExpense()\">\n    <label for=\"name\" class=\"enter-name\">\n      <span> Denumire</span>\n    </label>\n    <input type=\"text\" formControlName=\"name\" placeholder=\"ex: Mancare\">\n    <label for=\"price\" class=\"enter-price\">\n      <span> Suma cheltuită</span>\n    </label>\n    <input type=\"number\" formControlName=\"price\" placeholder=\"ex: 50\">\n    <label for=\"date\" class=\"enter-date\">\n      <span> Data </span>\n    </label>\n    <mat-form-field>\n      <input matInput [matDatepicker]=\"picker\" formControlName=\"date\"\n       placeholder=\"Alege o dată\">\n      <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n      <mat-datepicker #picker></mat-datepicker>\n    </mat-form-field>\n    <div class=\"error\">\n      <mat-error *ngIf=\"hasError()\">{{getError()}}</mat-error>\n    </div>\n    <mat-dialog-actions>\n      <a (click)=\"close()\">\n        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"36\" viewBox=\"0 0 24 24\">\n          <path fill=\"#fff\"\n            d=\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\" />\n          <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        </svg>\n      </a>\n      <button type=submit [disabled]=\"submittedForm\">Salvează</button>\n      <button (click)=\"close()\">Anulează</button>\n    </mat-dialog-actions>\n  </form>\n</div>\n"
+module.exports = "<h1 mat-dialog-title>Cheltuială nouă</h1>\n<div class=\"form-fields\">\n  <form [formGroup]=\"expenseForm\" (ngSubmit)=\"saveExpense()\">\n    <label for=\"name\" class=\"enter-name\">\n      <span> Denumire</span>\n    </label>\n    <input type=\"text\" formControlName=\"name\" placeholder=\"ex: Mancare\">\n    <label for=\"price\" class=\"enter-price\">\n      <span> Suma cheltuită</span>\n    </label>\n    <input type=\"number\" formControlName=\"price\" placeholder=\"ex: 50\">\n    <label for=\"date\" class=\"enter-date\">\n      <span> Data </span>\n    </label>\n    <mat-form-field>\n      <input matInput [matDatepicker]=\"picker\" formControlName=\"date\"\n       placeholder=\"Alege o dată\">\n      <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n      <mat-datepicker #picker></mat-datepicker>\n    </mat-form-field>\n    <mat-checkbox (click)=\"showExpenseDetails()\">\n      Adaug detalii suplimentare\n    </mat-checkbox>\n    <mat-form-field *ngIf=\"isVisible\">\n      <mat-label>Categorie</mat-label>\n      <mat-select  formControlName=\"category\"  placeholder=\"Selectează categoria\">\n        <mat-option  *ngFor=\"let category of categories\" [value]=\"category.name\">\n          {{category.name}}\n        </mat-option>\n      </mat-select>\n    </mat-form-field>\n    <mat-form-field *ngIf=\"isVisible\">\n      <mat-label>Persoane</mat-label>\n      <mat-select  formControlName=\"people\" multiple>\n        <mat-option  *ngFor=\"let people of peopleData\" [value]=\"people.name\" multi>\n          {{people.name}}\n        </mat-option>\n      </mat-select>\n    </mat-form-field>\n    <div class=\"error\">\n      <mat-error *ngIf=\"hasError()\">{{getError()}}</mat-error>\n    </div>\n    <mat-dialog-actions>\n      <button type=submit [disabled]=\"submittedForm\">Salvează</button>\n      <button (click)=\"close()\">Anulează</button>\n    </mat-dialog-actions>\n  </form>\n</div>\n"
 
 /***/ }),
 
@@ -752,6 +727,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var ng_snotify__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ng-snotify */ "./node_modules/ng-snotify/index.js");
 /* harmony import */ var _expense_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../expense.service */ "./src/app/expense/expense.service.ts");
+/* harmony import */ var src_app_auth_auth_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/auth/auth.service */ "./src/app/auth/auth.service.ts");
+
 
 
 
@@ -759,20 +736,41 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var CreateExpenseComponent = /** @class */ (function () {
-    function CreateExpenseComponent(_expenseService, snotify, dialogRef, data) {
+    function CreateExpenseComponent(_expenseService, snotify, dialogRef, data, _authService) {
         this._expenseService = _expenseService;
         this.snotify = snotify;
         this.dialogRef = dialogRef;
         this.data = data;
+        this._authService = _authService;
         this.errorMessage = '';
         this.submittedForm = false;
+        this.isVisible = false;
     }
     CreateExpenseComponent.prototype.ngOnInit = function () {
         this.expenseForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
             name: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
             price: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
-            date: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required])
+            date: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+            category: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', []),
+            people: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', []),
         });
+        this.categories = [
+            { name: 'Mâncare' },
+            { name: 'Cumpărături' },
+            { name: 'Haine' },
+            { name: 'Pentru casă' },
+            { name: 'Cadouri' },
+            { name: 'Mașină' },
+            { name: 'Altele' }
+        ];
+        this.peopleData = [
+            { name: 'Mama' },
+            { name: 'Tata' },
+            { name: 'Ana' },
+            { name: 'Diana' },
+            { name: 'Cristi' },
+            { name: 'Iulia' }
+        ];
     };
     Object.defineProperty(CreateExpenseComponent.prototype, "name", {
         get: function () { return this.expenseForm.get('name'); },
@@ -789,14 +787,28 @@ var CreateExpenseComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(CreateExpenseComponent.prototype, "category", {
+        get: function () { return this.expenseForm.get('category'); },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(CreateExpenseComponent.prototype, "people", {
+        get: function () { return this.expenseForm.get('people'); },
+        enumerable: true,
+        configurable: true
+    });
+    CreateExpenseComponent.prototype.showExpenseDetails = function () {
+        this.isVisible = !this.isVisible;
+    };
     CreateExpenseComponent.prototype.saveExpense = function () {
         var _this = this;
         if (this.isFormValid()) {
-            var id = 'ceva';
             this.submittedForm = true;
             var expense_1 = this.expenseForm.value;
-            this._expenseService.createExpense(expense_1, id).subscribe(function (res) {
+            this._expenseService.createExpense(expense_1, this._authService.userID).subscribe(function (res) {
                 expense_1 = res;
+                expense_1.category = _this.expenseForm.get('category').value;
+                expense_1.people = _this.expenseForm.get('people').value;
                 _this.dialogRef.close({ expense: expense_1 });
                 _this.snotify.success('Expense ' + expense_1.name + ' was successfully created.');
             }, function (err) {
@@ -805,15 +817,8 @@ var CreateExpenseComponent = /** @class */ (function () {
         }
     };
     CreateExpenseComponent.prototype.setErrorMessages = function (err) {
-        if (String(err.error).includes('UNIQUE KEY')) {
-            this.submittedForm = false;
-            this.errorMessage = 'Expense price already exists.';
-            this.expenseForm.setErrors({ wrong: true });
-        }
-        else {
-            this.dialogRef.close();
-            this.snotify.error('The server encountered an error while processing the request.');
-        }
+        this.dialogRef.close();
+        this.snotify.error('The server encountered an error while processing the request.');
     };
     CreateExpenseComponent.prototype.close = function () {
         this.dialogRef.close();
@@ -848,7 +853,7 @@ var CreateExpenseComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](3, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_3__["MAT_DIALOG_DATA"])),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_expense_service__WEBPACK_IMPORTED_MODULE_5__["ExpenseService"],
             ng_snotify__WEBPACK_IMPORTED_MODULE_4__["SnotifyService"],
-            _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialogRef"], Object])
+            _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialogRef"], Object, src_app_auth_auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"]])
     ], CreateExpenseComponent);
     return CreateExpenseComponent;
 }());
@@ -875,7 +880,7 @@ module.exports = ".mat-dialog-container {\n    background: #333333;\n  }\n    h1
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <h1 mat-dialog-title>\n   Ești sigur că vrei să ștergi cheltuiala {{data.expense.name}}?\n  </h1>\n  <mat-dialog-actions>\n    <a (click)=\"close()\">\n      <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"36\" viewBox=\"0 0 24 24\">\n        <path fill=\"#fff\" d=\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\"\n        />\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n      </svg>\n    </a>\n    <div class=\"buttons-wrapper\">\n      <button mat-button (click)=\"close()\" class=\"cancel-button\">Nu</button>\n      <button mat-button (click)=\"deleteExpense()\">Da</button>\n    </div>\n  </mat-dialog-actions> -->"
+module.exports = "<h1 mat-dialog-title>\n   Ești sigur că vrei să ștergi cheltuiala {{data.expense.name}}?\n  </h1>\n  <mat-dialog-actions>\n    <a (click)=\"close()\">\n      <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"36\" viewBox=\"0 0 24 24\">\n        <path fill=\"#fff\" d=\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\"\n        />\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n      </svg>\n    </a>\n    <div class=\"buttons-wrapper\">\n      <button mat-button (click)=\"close()\" class=\"cancel-button\">Nu</button>\n      <button mat-button (click)=\"deleteExpense()\">Da</button>\n    </div>\n  </mat-dialog-actions>"
 
 /***/ }),
 
@@ -891,12 +896,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DeleteExpenseComponent", function() { return DeleteExpenseComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _expense_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../expense.service */ "./src/app/expense/expense.service.ts");
+/* harmony import */ var ng_snotify__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ng-snotify */ "./node_modules/ng-snotify/index.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+
+
+
 
 
 var DeleteExpenseComponent = /** @class */ (function () {
-    function DeleteExpenseComponent() {
+    function DeleteExpenseComponent(_expenseService, _snotify, _dialogRef, data) {
+        this._expenseService = _expenseService;
+        this._snotify = _snotify;
+        this._dialogRef = _dialogRef;
+        this.data = data;
     }
     DeleteExpenseComponent.prototype.ngOnInit = function () {
+    };
+    DeleteExpenseComponent.prototype.deleteExpense = function () {
+        var _this = this;
+        var expense = this.data.expense;
+        this._expenseService.deleteExpense(this.data.expense.id).subscribe(function (res) {
+            _this._dialogRef.close(expense);
+            _this._snotify.success('Expense ' + expense.name + ' was successfully deleted.');
+        }, function (err) {
+            _this.close();
+            _this._snotify.error('The server encountered an error while processing the request.');
+        });
+    };
+    DeleteExpenseComponent.prototype.close = function () {
+        this._dialogRef.close();
     };
     DeleteExpenseComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -904,7 +933,10 @@ var DeleteExpenseComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./delete-expense.component.html */ "./src/app/expense/delete-expense/delete-expense.component.html"),
             styles: [__webpack_require__(/*! ./delete-expense.component.css */ "./src/app/expense/delete-expense/delete-expense.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](3, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_4__["MAT_DIALOG_DATA"])),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_expense_service__WEBPACK_IMPORTED_MODULE_2__["ExpenseService"],
+            ng_snotify__WEBPACK_IMPORTED_MODULE_3__["SnotifyService"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatDialogRef"], Object])
     ], DeleteExpenseComponent);
     return DeleteExpenseComponent;
 }());
@@ -920,7 +952,7 @@ var DeleteExpenseComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".mat-dialog-container {\n    background: #333333;\n  }\n    h1.mat-dialog-title {\n      width: 100%;\n      text-align: center;\n      color: #ffffff;\n      font-family: \"VodafoneLt\";\n      font-size: 48px;\n      line-height: 25px;\n      padding: 10px 20px;\n      margin: 0;\n      margin-top: 5%;\n    }\n    a {\n      position: absolute;\n      top: 0;\n      right: 0;\n      padding: 5px;\n      cursor: pointer;\n    }\n    button {\n      outline: none;\n      background: #e60000;\n      width: 47%;\n      font-size: 20px;\n      padding: 6px;\n      color: #ffffff;\n      text-align: center;\n      text-decoration: none;\n      font-family: \"VodafoneLt\";\n      cursor: pointer;  \n    }\n    .cancel-button{\n      background:#666;\n      outline: none;\n      width: 47%;\n      font-size: 20px;\n      padding: 6px;\n      color: #ffffff;\n      text-align: center;\n      text-decoration: none;\n      font-family: \"VodafoneLt\";\n      cursor: pointer;  \n    }\n    .buttons-wrapper{\n      width:600px;\n      margin:90px auto;\n    }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZXhwZW5zZS9lZGl0LWV4cGVuc2UvZWRpdC1leHBlbnNlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxtQkFBbUI7RUFDckI7SUFDRTtNQUNFLFdBQVc7TUFDWCxrQkFBa0I7TUFDbEIsY0FBYztNQUNkLHlCQUF5QjtNQUN6QixlQUFlO01BQ2YsaUJBQWlCO01BQ2pCLGtCQUFrQjtNQUNsQixTQUFTO01BQ1QsY0FBYztJQUNoQjtJQUVBO01BQ0Usa0JBQWtCO01BQ2xCLE1BQU07TUFDTixRQUFRO01BQ1IsWUFBWTtNQUNaLGVBQWU7SUFDakI7SUFFQTtNQUNFLGFBQWE7TUFDYixtQkFBbUI7TUFDbkIsVUFBVTtNQUNWLGVBQWU7TUFDZixZQUFZO01BQ1osY0FBYztNQUNkLGtCQUFrQjtNQUNsQixxQkFBcUI7TUFDckIseUJBQXlCO01BQ3pCLGVBQWU7SUFDakI7SUFFQTtNQUNFLGVBQWU7TUFDZixhQUFhO01BQ2IsVUFBVTtNQUNWLGVBQWU7TUFDZixZQUFZO01BQ1osY0FBYztNQUNkLGtCQUFrQjtNQUNsQixxQkFBcUI7TUFDckIseUJBQXlCO01BQ3pCLGVBQWU7SUFDakI7SUFFQTtNQUNFLFdBQVc7TUFDWCxnQkFBZ0I7SUFDbEIiLCJmaWxlIjoic3JjL2FwcC9leHBlbnNlL2VkaXQtZXhwZW5zZS9lZGl0LWV4cGVuc2UuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tYXQtZGlhbG9nLWNvbnRhaW5lciB7XG4gICAgYmFja2dyb3VuZDogIzMzMzMzMztcbiAgfVxuICAgIGgxLm1hdC1kaWFsb2ctdGl0bGUge1xuICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgICBjb2xvcjogI2ZmZmZmZjtcbiAgICAgIGZvbnQtZmFtaWx5OiBcIlZvZGFmb25lTHRcIjtcbiAgICAgIGZvbnQtc2l6ZTogNDhweDtcbiAgICAgIGxpbmUtaGVpZ2h0OiAyNXB4O1xuICAgICAgcGFkZGluZzogMTBweCAyMHB4O1xuICAgICAgbWFyZ2luOiAwO1xuICAgICAgbWFyZ2luLXRvcDogNSU7XG4gICAgfVxuICBcbiAgICBhIHtcbiAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgIHRvcDogMDtcbiAgICAgIHJpZ2h0OiAwO1xuICAgICAgcGFkZGluZzogNXB4O1xuICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIH1cbiAgICBcbiAgICBidXR0b24ge1xuICAgICAgb3V0bGluZTogbm9uZTtcbiAgICAgIGJhY2tncm91bmQ6ICNlNjAwMDA7XG4gICAgICB3aWR0aDogNDclO1xuICAgICAgZm9udC1zaXplOiAyMHB4O1xuICAgICAgcGFkZGluZzogNnB4O1xuICAgICAgY29sb3I6ICNmZmZmZmY7XG4gICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG4gICAgICBmb250LWZhbWlseTogXCJWb2RhZm9uZUx0XCI7XG4gICAgICBjdXJzb3I6IHBvaW50ZXI7ICBcbiAgICB9XG4gICBcbiAgICAuY2FuY2VsLWJ1dHRvbntcbiAgICAgIGJhY2tncm91bmQ6IzY2NjtcbiAgICAgIG91dGxpbmU6IG5vbmU7XG4gICAgICB3aWR0aDogNDclO1xuICAgICAgZm9udC1zaXplOiAyMHB4O1xuICAgICAgcGFkZGluZzogNnB4O1xuICAgICAgY29sb3I6ICNmZmZmZmY7XG4gICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG4gICAgICBmb250LWZhbWlseTogXCJWb2RhZm9uZUx0XCI7XG4gICAgICBjdXJzb3I6IHBvaW50ZXI7ICBcbiAgICB9IFxuICBcbiAgICAuYnV0dG9ucy13cmFwcGVye1xuICAgICAgd2lkdGg6NjAwcHg7XG4gICAgICBtYXJnaW46OTBweCBhdXRvO1xuICAgIH1cbiJdfQ== */"
+module.exports = "\ninput.ng-invalid.ng-touched:not(:focus) {\n  outline: none;\n  border: 1px solid #E60000;\n  border-radius: 0;\n}\n\n\n\n.error {\n  text-align: left;\n  font-size: 10px;\n  height: 15px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZXhwZW5zZS9lZGl0LWV4cGVuc2UvZWRpdC1leHBlbnNlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUNBO0VBQ0UsYUFBYTtFQUNiLHlCQUF5QjtFQUN6QixnQkFBZ0I7QUFDbEI7Ozs7QUFJQTtFQUNFLGdCQUFnQjtFQUNoQixlQUFlO0VBQ2YsWUFBWTtBQUNkIiwiZmlsZSI6InNyYy9hcHAvZXhwZW5zZS9lZGl0LWV4cGVuc2UvZWRpdC1leHBlbnNlLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbmlucHV0Lm5nLWludmFsaWQubmctdG91Y2hlZDpub3QoOmZvY3VzKSB7XG4gIG91dGxpbmU6IG5vbmU7XG4gIGJvcmRlcjogMXB4IHNvbGlkICNFNjAwMDA7XG4gIGJvcmRlci1yYWRpdXM6IDA7XG59XG5cblxuXG4uZXJyb3Ige1xuICB0ZXh0LWFsaWduOiBsZWZ0O1xuICBmb250LXNpemU6IDEwcHg7XG4gIGhlaWdodDogMTVweDtcbn0iXX0= */"
 
 /***/ }),
 
@@ -931,7 +963,7 @@ module.exports = ".mat-dialog-container {\n    background: #333333;\n  }\n    h1
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <h1 mat-dialog-title>Edit language</h1>\n<div class=\"form-fields\">\n  <form [formGroup]=\"languageForm\" (ngSubmit)=\"saveLanguageUpdates()\">\n    <label  class=\"required\" for=\"name\">\n      <span>Language name</span>\n    </label>\n    <input matInput formControlName=\"name\" placeholder=\"Name\">\n    <label class=\"required\" for=\"code\">\n      <span>Language code</span>\n    </label>\n    <input matInput formControlName=\"code\" placeholder=\"Code\">\n    <label for=\"status\">\n      <span>Language status</span>\n    </label>\n    <mat-select class=\"select\" disableOptionCentering formControlName=\"status\" placeholder=\"Status\">\n      <mat-option [value]=\"0\" [disabled]=\"data.language.status === 0\">Inactive</mat-option>\n      <mat-option [value]=\"1\" [disabled]=\"data.language.status === 1\">Active</mat-option>\n    </mat-select>\n    <div class=\"error\">\n      <mat-error *ngIf=\"hasError()\">{{getError()}}</mat-error>\n    </div>\n    <mat-dialog-actions>\n      <a (click)=\"closeDialog()\">\n        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"36\" viewBox=\"0 0 24 24\">\n          <path fill=\"#fff\" d=\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\"/>\n          <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        </svg>\n      </a>\n      <button type=submit [disabled]=\"submittedForm\">Save</button>\n    </mat-dialog-actions>\n  </form>\n</div> -->"
+module.exports = "<h1 mat-dialog-title>Editare cheltuială</h1>\n<div class=\"form-fields\">\n  <form [formGroup]=\"expenseForm\" (ngSubmit)=\"saveExpenseUpdates()\">\n    <label  class=\"required\" for=\"name\">\n      <span>Denumire</span>\n    </label>\n    <input matInput formControlName=\"name\" placeholder=\"Name\">\n    <label class=\"required\" for=\"value\">\n      <span>Valoare (RON)</span>\n    </label>\n    <input matInput formControlName=\"value\" placeholder=\"Valoare\">  \n    <div class=\"error\">\n      <mat-error *ngIf=\"hasError()\">{{getError()}}</mat-error>\n    </div>\n    <mat-dialog-actions>\n      <button type=submit [disabled]=\"submittedForm\">Salvează</button>\n      <button (click)=\"close()\">Anulează</button>\n    </mat-dialog-actions>\n  </form>\n</div>"
 
 /***/ }),
 
@@ -947,12 +979,86 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditExpenseComponent", function() { return EditExpenseComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _expense_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../expense.service */ "./src/app/expense/expense.service.ts");
+/* harmony import */ var ng_snotify__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ng-snotify */ "./node_modules/ng-snotify/index.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var src_app_auth_auth_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/auth/auth.service */ "./src/app/auth/auth.service.ts");
+
+
+
+
+
 
 
 var EditExpenseComponent = /** @class */ (function () {
-    function EditExpenseComponent() {
+    function EditExpenseComponent(_expenseService, _authService, _snotify, _dialogRef, data) {
+        this._expenseService = _expenseService;
+        this._authService = _authService;
+        this._snotify = _snotify;
+        this._dialogRef = _dialogRef;
+        this.data = data;
+        this.errorMessage = '';
+        this.submittedForm = false;
     }
     EditExpenseComponent.prototype.ngOnInit = function () {
+        this.expenseForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
+            name: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](this.data.expense.name, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+            value: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](this.data.expense.value, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+        });
+    };
+    Object.defineProperty(EditExpenseComponent.prototype, "name", {
+        get: function () { return this.expenseForm.get('name'); },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(EditExpenseComponent.prototype, "value", {
+        get: function () { return this.expenseForm.get('value'); },
+        enumerable: true,
+        configurable: true
+    });
+    EditExpenseComponent.prototype.isFormValid = function () {
+        var _this = this;
+        this.expenseForm.setErrors({ wrong: null });
+        this.expenseForm.updateValueAndValidity();
+        Object.keys(this.expenseForm.controls).forEach(function (key) {
+            var control = _this.expenseForm.get(key);
+            control.markAsTouched();
+        });
+        return this.expenseForm.valid;
+    };
+    EditExpenseComponent.prototype.saveExpenseUpdates = function () {
+        var _this = this;
+        if (this.isFormValid()) {
+            this.submittedForm = true;
+            var expense_1 = this.expenseForm.value;
+            expense_1.date = this.data.expense.date;
+            this._expenseService.updateExpense(expense_1, this.data.expense.id).subscribe(function (res) {
+                _this._dialogRef.close(expense_1);
+                _this._snotify.success('Expense ' + expense_1.name + ' was successfully updated.');
+            }, function (err) {
+                _this.setErrorMessages(err);
+            });
+        }
+    };
+    EditExpenseComponent.prototype.setErrorMessages = function (err) {
+        this._dialogRef.close();
+        this._snotify.error('The server encountered an error while processing the request.');
+    };
+    EditExpenseComponent.prototype.close = function () {
+        this._dialogRef.close();
+    };
+    EditExpenseComponent.prototype.hasError = function () {
+        return this.name.invalid && (this.name.touched || this.name.dirty) ||
+            this.value.invalid && (this.value.touched || this.value.dirty) ||
+            this.expenseForm.hasError('wrong');
+    };
+    EditExpenseComponent.prototype.getError = function () {
+        if (this.value.invalid) {
+            this.errorMessage = 'Email for value is not valid.';
+        }
+        return this.name.hasError('required') || this.value.hasError('required') ? 'All fields are required.'
+            : this.errorMessage;
     };
     EditExpenseComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -960,7 +1066,11 @@ var EditExpenseComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./edit-expense.component.html */ "./src/app/expense/edit-expense/edit-expense.component.html"),
             styles: [__webpack_require__(/*! ./edit-expense.component.css */ "./src/app/expense/edit-expense/edit-expense.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](4, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_5__["MAT_DIALOG_DATA"])),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_expense_service__WEBPACK_IMPORTED_MODULE_3__["ExpenseService"],
+            src_app_auth_auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"],
+            ng_snotify__WEBPACK_IMPORTED_MODULE_4__["SnotifyService"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDialogRef"], Object])
     ], EditExpenseComponent);
     return EditExpenseComponent;
 }());
@@ -987,7 +1097,7 @@ module.exports = "i {\n    cursor: pointer;\n    margin-right: 20px;\n}\n/*# sou
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <i class=\"glyphicon glyphicon-pencil\" (click)=\"editExpense()\"></i>\n    <i class=\"glyphicon glyphicon-trash\" (click)=\"deleteExpense()\"></i>\n</div>"
+module.exports = "<div>\n    <i class=\"fa fa-pencil\" (click)=\"editExpense()\"></i>\n    <i class=\"fa fa-trash\" (click)=\"deleteExpense()\"></i>\n</div>"
 
 /***/ }),
 
@@ -1025,13 +1135,16 @@ var ExpenseActionsRendererComponent = /** @class */ (function () {
     ExpenseActionsRendererComponent.prototype.editExpense = function () {
         var _this = this;
         var dialogRef = this.dialog.open(_edit_expense_edit_expense_component__WEBPACK_IMPORTED_MODULE_4__["EditExpenseComponent"], {
-            minWidth: '100%',
-            height: '100%',
+            autoFocus: false,
+            disableClose: true,
+            minWidth: '50%',
+            height: '50%',
             data: {
                 expense: this.params.node.data
             }
         }).afterClosed().subscribe(function (res) {
             if (res) {
+                res.id = _this.params.node.data.id;
                 _this.params.node.setData(res);
             }
         });
@@ -1039,13 +1152,16 @@ var ExpenseActionsRendererComponent = /** @class */ (function () {
     ExpenseActionsRendererComponent.prototype.deleteExpense = function () {
         var _this = this;
         var dialogRef = this.dialog.open(_delete_expense_delete_expense_component__WEBPACK_IMPORTED_MODULE_2__["DeleteExpenseComponent"], {
-            minWidth: '100%',
-            height: '100%',
+            autoFocus: false,
+            disableClose: true,
+            minWidth: '50%',
+            height: '50%',
             data: {
                 expense: this.params.node.data
             }
         }).afterClosed().subscribe(function (res) {
             if (res) {
+                res.id = _this.params.node.data.id;
                 _this.gridApi.updateRowData({ remove: [res] });
             }
         });
@@ -1083,7 +1199,7 @@ module.exports = "button {\n    font-size: 20px;\n    margin-bottom: 5px;\n    c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"app\">\n<button mat-raised-button (click)=\"newExpensePopUp()\">Adaugă cheltuială</button>\n<ag-grid-angular domLayout=\"autoHeight\" class=\"ag-theme-balham\" sortable=\"true\" filter=\"true\" [rowData]=\"rowData\"\n    [columnDefs]=\"columnDefs\" [suppressHorizontalScroll]=\"true\" (gridReady)=\"onGridReady($event)\" [frameworkComponents]=\"frameworkComponents\">\n</ag-grid-angular>\n</div>\n<!-- <div>IT WORKS</div> -->"
+module.exports = "<div class=\"app\">\n  <button mat-raised-button (click)=\"newExpensePopUp()\">Adaugă cheltuială</button>\n  <div class=\"row\">\n    <ag-grid-angular class=\"col-md-6\" domLayout=\"autoHeight\" class=\"ag-theme-balham\" [rowData]=\"rowData\"\n      style=\"width:50%; padding-left:3%;\" [columnDefs]=\"columnDefs\" [suppressHorizontalScroll]=\"true\"\n      (gridReady)=\"onGridReady($event)\" [frameworkComponents]=\"frameworkComponents\">\n    </ag-grid-angular>\n    <div class=\"col-md-6\">\n      <div class=\"row\">\n        <highcharts-chart [Highcharts]=\"highcharts\" [options]=\"chartOptions\"\n          style=\"width: 100%; height: 400px; display: block;\" *ngIf=\"isChartReady\">\n        </highcharts-chart>\n      </div>\n      <div class=\"row\">\n        <highcharts-chart [Highcharts]=\"highchartsPeople\" [options]=\"chartOptionsPeople\"\n          style=\"width: 100%; height: 400px; display: block;\" *ngIf=\"isChartReady\">\n        </highcharts-chart>\n      </div>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -1104,6 +1220,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _expense_actions_renderer_expense_actions_renderer_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./expense-actions-renderer/expense-actions-renderer.component */ "./src/app/expense/expense-actions-renderer/expense-actions-renderer.component.ts");
 /* harmony import */ var _create_expense_create_expense_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./create-expense/create-expense.component */ "./src/app/expense/create-expense/create-expense.component.ts");
 /* harmony import */ var _auth_auth_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../auth/auth.service */ "./src/app/auth/auth.service.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var highcharts__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! highcharts */ "./node_modules/highcharts/highcharts.js");
+/* harmony import */ var highcharts__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(highcharts__WEBPACK_IMPORTED_MODULE_8__);
+
+
 
 
 
@@ -1112,15 +1233,38 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ExpenseComponent = /** @class */ (function () {
-    function ExpenseComponent(_expenseService, dialog, _authService) {
+    function ExpenseComponent(_expenseService, dialog, _authService, datePipe) {
         this._expenseService = _expenseService;
         this.dialog = dialog;
         this._authService = _authService;
-        this.rowData = [];
+        this.datePipe = datePipe;
+        this.count = [];
+        this.total = 0;
+        this.isChartReady = false;
+        this.categories = [
+            { name: 'Mâncare' },
+            { name: 'Cumpărături' },
+            { name: 'Haine' },
+            { name: 'Pentru casă' },
+            { name: 'Cadouri' },
+            { name: 'Mașină' },
+            { name: 'Altele' }
+        ];
+        this.people = [
+            'Mama',
+            'Tata',
+            'Ana',
+            'Diana',
+            'Cristi',
+            'Iulia'
+        ];
         this.columnDefs = [
-            { headerName: 'Valoare', field: 'value', width: 10, filter: 'agTextColumnFilter' },
-            // { headerName: 'Code', field: 'code', width: 10,  filter: 'agTextColumnFilter' },
-            { headerName: 'Actions', field: 'actions', width: 20, cellRenderer: 'actionsRenderer' }
+            { headerName: 'Denumire', field: 'name', filter: 'agTextColumnFilter', sortable: true },
+            { headerName: 'Valoare (RON)', field: 'value', filter: 'agNumberColumnFilter', sortable: true },
+            { headerName: 'Data', field: 'date', filter: 'agDateColumnFilter', sortable: true },
+            { headerName: 'Categorie', field: 'category', filter: 'agTextColumnFilter', sortable: true },
+            { headerName: 'Persoane', field: 'people', filter: 'agTextColumnFilter', sortable: true },
+            { headerName: 'Acțiuni', field: 'actions', cellRenderer: 'actionsRenderer' }
         ];
         this.gridOptions = {
             columnDefs: this.columnDefs,
@@ -1134,19 +1278,110 @@ var ExpenseComponent = /** @class */ (function () {
     }
     ExpenseComponent.prototype.ngOnInit = function () {
         this.setRowData();
-        this._expenseService.readExpenses(this._authService.userID).subscribe(function (res) {
-            console.log(res);
-        });
     };
     ExpenseComponent.prototype.setRowData = function () {
         var _this = this;
         this._expenseService.readExpenses(this._authService.userID).subscribe(function (res) {
             _this.rowData = res;
+            _this.setChartData();
         });
     };
     ExpenseComponent.prototype.onGridReady = function (params) {
         this.gridApi = params.api;
         this.gridApi.sizeColumnsToFit();
+    };
+    ExpenseComponent.prototype.setChartData = function () {
+        var _this = this;
+        this.categories.forEach(function (category) {
+            _this.count[category.name] = 0;
+        });
+        this.people.forEach(function (person) {
+            _this.count[person] = 0;
+        });
+        this.rowData.forEach(function (expense) {
+            _this.count[expense.category] += expense.value;
+            if (expense.people != null) {
+                var ppl = expense.people.split(',');
+                ppl.forEach(function (element) {
+                    console.log(element + expense.value);
+                    _this.count[element] += expense.value;
+                });
+            }
+            _this.count[expense];
+            _this.total += expense.value;
+        });
+        this.isChartReady = true;
+        this.highcharts = highcharts__WEBPACK_IMPORTED_MODULE_8__;
+        this.chartOptions = {
+            chart: {
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Total cheltuieli pe categorii'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: {point.y:.1f} RON.'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                    type: 'pie',
+                    name: 'Suma cheltuită:',
+                    data: [
+                        ['Mâncare', this.count['Mâncare']],
+                        ['Cumpărături', this.count['Cumpărături']],
+                        ['Haine', this.count['Haine']],
+                        ['Mașină', this.count['Mașină']],
+                        ['Cadouri', this.count['Cadouri']],
+                        ['Pentru Casă', this.count['Pentru Casă']],
+                        ['Altele', this.count['Altele']]
+                    ]
+                }]
+        };
+        this.highchartsPeople = highcharts__WEBPACK_IMPORTED_MODULE_8__;
+        this.chartOptionsPeople = {
+            chart: {
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Total cheltuieli în funcție de persoane'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: {point.y:.1f} RON.'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                    type: 'pie',
+                    name: 'Suma cheltuită:',
+                    data: [
+                        ['Ana', this.count['Ana']],
+                        ['Cristi', this.count['Cristi']],
+                        ['Diana', this.count['Diana']],
+                        ['Tata', this.count['Tata']],
+                        ['Iulia', this.count['Iulia']],
+                        ['Mama', this.count['Mama']]
+                    ]
+                }]
+        };
     };
     ExpenseComponent.prototype.newExpensePopUp = function () {
         var _this = this;
@@ -1156,9 +1391,12 @@ var ExpenseComponent = /** @class */ (function () {
             minWidth: '50%',
             height: '50%'
         });
-        dialogRef.afterClosed().subscribe(function (result) {
-            if (result) {
-                _this.gridApi.updateRowData({ add: [result.expense] });
+        dialogRef.afterClosed().subscribe(function (res) {
+            if (res) {
+                console.log("TCL: ExpenseComponent -> res", res);
+                var expense = res.expense[0];
+                expense.date = _this.datePipe.transform(expense.date, 'dd MMM, yyyy');
+                _this.gridApi.updateRowData({ add: [expense] });
             }
         });
     };
@@ -1168,7 +1406,8 @@ var ExpenseComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./expense.component.html */ "./src/app/expense/expense.component.html"),
             styles: [__webpack_require__(/*! ./expense.component.css */ "./src/app/expense/expense.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_expense_service__WEBPACK_IMPORTED_MODULE_2__["ExpenseService"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialog"], _auth_auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_expense_service__WEBPACK_IMPORTED_MODULE_2__["ExpenseService"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialog"], _auth_auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"],
+            _angular_common__WEBPACK_IMPORTED_MODULE_7__["DatePipe"]])
     ], ExpenseComponent);
     return ExpenseComponent;
 }());
@@ -1203,18 +1442,20 @@ var ExpenseService = /** @class */ (function () {
     function ExpenseService(_http) {
         this._http = _http;
     }
-    ExpenseService.prototype.createExpense = function (Expense, id) {
-        return this._http.post(src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].apiUri + "/expenses/" + id, Expense).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(err); }));
+    ExpenseService.prototype.createExpense = function (expense, id) {
+        console.log(expense);
+        id = 'auth0|5cffd2df7a541c0d42e41522';
+        return this._http.post(src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].apiUri + "/api/expenses/" + id, expense).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(err); }));
     };
     ExpenseService.prototype.readExpenses = function (id) {
-        console.log("TCL: ExpenseService -> constructor -> id", id);
-        return this._http.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].apiUri + "/expenses/" + id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(err); }));
+        id = 'auth0|5cffd2df7a541c0d42e41522';
+        return this._http.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].apiUri + "/api/expenses/" + id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(err); }));
     };
-    ExpenseService.prototype.updateExpense = function (Expense, id) {
-        return this._http.put(src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].apiUri + "/expenses/" + id, Expense).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(err); }));
+    ExpenseService.prototype.updateExpense = function (expense, id) {
+        return this._http.put(src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].apiUri + "/api/expenses/" + id, expense).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(err); }));
     };
     ExpenseService.prototype.deleteExpense = function (id) {
-        return this._http.delete(src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].apiUri + "/expenses/" + id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(err); }));
+        return this._http.delete(src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].apiUri + "/api/expenses/" + id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(err); }));
     };
     ExpenseService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
@@ -1417,7 +1658,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var declarations = [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatButtonModule"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatIconModule"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatToolbarModule"],
     _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatFormFieldModule"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatInputModule"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSidenavModule"],
-    _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatListModule"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogModule"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatOptionModule"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSelectModule"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDatepickerModule"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatNativeDateModule"]];
+    _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatListModule"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogModule"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatOptionModule"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSelectModule"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDatepickerModule"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatNativeDateModule"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatCheckboxModule"]];
 var MaterialModule = /** @class */ (function () {
     function MaterialModule() {
     }

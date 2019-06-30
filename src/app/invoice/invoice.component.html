@@ -1,3 +1,21 @@
-<p>
-  invoice works!
-</p>
+<div class="app">
+  <div class="card" style="text-align: center">
+    <h5 class="card-title">Facturi și plăți fixe</h5>
+    <div class="card-body" >
+     <p> Aici îți poți adăuga facturile și alte costuri fixe precum întreținere, chirie, rată etc.! </p>
+     <p>Sumele vor fi calculate
+      automat în funcție
+      de recurența pe care o selectezi pentru fiecare cost, iar tu nu trebuie să te mai îngrijorezi că uiți de anumite
+      cheltuieli! </p>
+      <button mat-raised-button class="btn btn-primary" (click)="newInvoicePopUp()">Adaugă costuri fixe</button>
+    </div>
+    
+  </div>
+
+  <div>
+    <ag-grid-angular domLayout="autoHeight" class="ag-theme-balham" [rowData]="rowData"
+      style="width:100%; padding-left:3%; padding-right: 3%" [columnDefs]="columnDefs" [suppressHorizontalScroll]="true"
+      (gridReady)="onGridReady($event)" [frameworkComponents]="frameworkComponents">
+    </ag-grid-angular>
+  </div>
+</div>

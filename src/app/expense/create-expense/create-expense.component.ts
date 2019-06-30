@@ -19,6 +19,7 @@ export class CreateExpenseComponent implements OnInit {
   expenseForm: FormGroup;
   submittedForm = false;
   categories : any[];
+  peopleData: any[];
   isVisible = false;
 
   constructor(private _expenseService: ExpenseService,
@@ -34,7 +35,8 @@ export class CreateExpenseComponent implements OnInit {
       name: new FormControl('', [Validators.required]),
       price: new FormControl('', [Validators.required]),
       date:  new FormControl('', [Validators.required]),
-      category: new FormControl('',[])
+      category: new FormControl('',[]),
+      people: new FormControl('',[]),
     });
     this.categories = [ 
       { name : 'Mâncare'},
@@ -45,12 +47,21 @@ export class CreateExpenseComponent implements OnInit {
       { name : 'Mașină'},
       {name: 'Altele'}
     ]
+    this.peopleData = [ 
+      { name : 'Mama'},
+      { name : 'Tata'},
+      { name : 'Ana'},
+      { name : 'Diana'},
+      { name : 'Cristi'},
+      {name: 'Iulia'}
+    ]
   }
 
   get name() { return this.expenseForm.get('name'); }
   get price() { return this.expenseForm.get('price'); }
   get date() { return this.expenseForm.get('date'); }
   get category() { return this.expenseForm.get('category');}
+  get people() { return this.expenseForm.get('people');}
 
   showExpenseDetails() {
     this.isVisible = !this.isVisible;
@@ -66,6 +77,7 @@ export class CreateExpenseComponent implements OnInit {
         res => {
           expense = res;       
           expense.category = this.expenseForm.get('category').value;
+          expense.people = this.expenseForm.get('people').value;
           this.dialogRef.close({ expense: expense});
           this.snotify.success('Expense ' + expense.name + ' was successfully created.');
         },

@@ -1,0 +1,71 @@
+<!-- <h1 mat-dialog-title>Adaugă cost fix</h1>
+<div class="form-fields">
+  <form [formGroup]="invoiceForm" >
+    <label for="name" class="enter-name">
+      <span> Denumire</span>
+    </label>
+    <input type="text" formControlName="name" placeholder="ex: Mancare">
+    <label for="price" class="enter-price">
+      <span> Valoare</span>
+    </label>
+    <input type="number" formControlName="price" placeholder="ex: 50">
+    <div class="error">
+      <mat-error *ngIf="hasError()">{{getError()}}</mat-error>
+    </div>
+   
+    <mat-dialog-actions>
+      <button type=submit [disabled]="submittedForm">Salvează</button>
+      <button (click)="close()">Anulează</button>
+    </mat-dialog-actions>
+  </form>
+</div> -->
+
+<form [formGroup]="invoiceForm" > 
+    <mat-vertical-stepper #linearVerticalStepper="matVerticalStepper"  [linear]="false">
+      <mat-step  >
+        <ng-template matStepLabel>Completează denumirea și valoarea costului sau a facturii</ng-template>
+        <mat-form-field>
+          <mat-label>Denumire</mat-label>
+          <input matInput formControlName="name"  required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Valoare</mat-label>
+          <input matInput formControlName="price" required> 
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Pasul următor</button>
+        </div>
+      </mat-step>
+  
+      <mat-step >
+          <ng-template matStepLabel>
+            <div>Completează recurența costului sau a facturii</div>
+          </ng-template>
+          <mat-form-field>
+            <mat-label>Recurență:</mat-label>
+            <mat-select  formControlName="reccurence"  placeholder="Selectează recurența facturii">
+                <mat-option  *ngFor="let reccurence of reccurences" [value]="reccurence.value">
+                  {{reccurence.name}}
+                </mat-option>
+              </mat-select>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Gata!</ng-template>
+        Datele au fost introduse corect?
+        <div>
+          <button mat-button [disabled]="submittedForm" (click)="saveInvoice()"> Adaugă cost</button>
+          <button type="button" mat-button (click)="linearVerticalStepper.reset()">Resetează</button>
+          <button type="button" mat-button (click)="close()">Anulează</button>
+        </div>
+      </mat-step>
+    </mat-vertical-stepper>
+  </form>
+  
+  
