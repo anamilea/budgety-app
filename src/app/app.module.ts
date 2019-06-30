@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HighchartsChartComponent } from 'highcharts-angular';
+import {  HighchartsChartModule } from 'highcharts-angular';
 import { LoginComponent } from './auth/login/login.component';
 import { ExpenseComponent } from './expense/expense.component';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -57,7 +57,7 @@ import { EconomiesService } from './economies/economies.service';
     DeleteIncomeComponent,
     CreateInvoiceComponent,
     EditInvoiceComponent,
-    DeleteInvoiceComponent
+    DeleteInvoiceComponent,
   ],
   declarations: [
     AppComponent,
@@ -74,7 +74,6 @@ import { EconomiesService } from './economies/economies.service';
     ExpenseActionsRendererComponent,
     CreateExpenseComponent,
     DeleteExpenseComponent,
-    HighchartsChartComponent,
     EditExpenseComponent,
     CreateIncomeComponent,
     DeleteIncomeComponent,
@@ -98,6 +97,7 @@ import { EconomiesService } from './economies/economies.service';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    HighchartsChartModule,
     AppRoutingModule,
     AgGridModule.withComponents([ExpenseActionsRendererComponent,
       IncomeActionsRendererComponent, EconomiesActionsRendererComponent,
