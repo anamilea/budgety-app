@@ -12,6 +12,7 @@ export class AuthService {
   private _accessToken: string;
   private _expiresAt: number;
   private _userID: string;
+  private _authenticated: boolean;
 
   auth0 = new auth0.WebAuth({
     clientID: 'uFINHhYMBik0xiEKH011FLKIFloyYsEW',
@@ -26,6 +27,7 @@ export class AuthService {
     this._accessToken = '';
     this._expiresAt = 0;
     this._userID = '';
+    this._authenticated = false;
   }
 
   get accessToken(): string {
@@ -63,6 +65,7 @@ export class AuthService {
     this._idToken = authResult.idToken;
     this._userID = authResult.idTokenPayload.sub;
     this._expiresAt = expiresAt;
+    this._authenticated = true;
   }
 
   public renewTokens(): void {
@@ -91,6 +94,7 @@ export class AuthService {
   public isAuthenticated(): boolean {
     // Check whether the current time is past the
     // access token's expiry time
-    return this._accessToken && Date.now() < this._expiresAt;
+    //return this._accessToken && Date.now() < this._expiresAt;
+    return this._authenticated;
   }
 }

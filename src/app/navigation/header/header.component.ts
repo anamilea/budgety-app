@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output} from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
@@ -9,13 +9,13 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class HeaderComponent implements OnInit {
   isAuthenticated = false;
 
- @Output() sidenavToggle = new EventEmitter<void>();
+  @Output() sidenavToggle = new EventEmitter<void>();
 
- constructor(private _authService: AuthService) {}
+  constructor(private _authService: AuthService) { }
 
   ngOnInit() {
     console.log(this._authService.userID);
-    this.isAuthenticated = this._authService.userID ? true : false;
+    this.isAuthenticated = this._authService.isAuthenticated();
   }
 
   onToggleSidenav() {

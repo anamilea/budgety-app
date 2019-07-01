@@ -13,7 +13,7 @@ export class SidenavComponent implements OnInit {
 
   ngOnInit() {
     console.log(this._authService.userID);
-    this.isAuthenticated = this._authService.userID ? true : false;
+    this.isAuthenticated = this._authService.isAuthenticated();
   }
 
   onClose(){
