@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Output} from '@angular/core';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -6,15 +7,21 @@ import { Component, OnInit, EventEmitter, Output} from '@angular/core';
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent implements OnInit {
-
+  isAuthenticated = false;
   @Output() closeSidenav = new EventEmitter<void>();
-  constructor() { }
+  constructor(private _authService: AuthService) { }
 
   ngOnInit() {
+    this.isAuthenticated = this._authService.isAuthenticated();
   }
 
   onClose(){
     this.closeSidenav.emit();
+  }
+
+  onLogout(){
+    this.onClose();
+    this._authService.logout();
   }
 
 }

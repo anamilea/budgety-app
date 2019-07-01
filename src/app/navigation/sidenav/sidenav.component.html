@@ -1,4 +1,4 @@
-<mat-nav-list>
+<mat-nav-list *ngIf="isAuthenticated">
     <a mat-list-item routerLink="/" (click)="onClose()">
       <span class="nav-caption">Pagina principală</span>
     </a>
@@ -11,7 +11,8 @@
     <a mat-list-item routerLink="/invoices" (click)="onClose()">
       <span class="nav-caption">Facturi și plăți fixe</span>
     </a>
-    <a mat-list-item routerLink="/reports" (click)="onClose()">
-      <span class="nav-caption">Rapoarte și analize</span>
+    <a mat-list-item routerLink="/" (click)="onLogout()">
+      <span class="nav-caption">Ieșire din cont</span>
     </a>
+
   </mat-nav-list>

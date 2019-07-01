@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Output} from '@angular/core';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -6,12 +7,14 @@ import { Component, OnInit, EventEmitter, Output} from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  isAuthenticated = false;
 
  @Output() sidenavToggle = new EventEmitter<void>();
 
-  constructor() { }
+ constructor(private _authService: AuthService) {}
 
   ngOnInit() {
+    this.isAuthenticated = this._authService.isAuthenticated();
   }
 
   onToggleSidenav() {

@@ -35,6 +35,7 @@ import { EditInvoiceComponent } from './invoice/edit-invoice/edit-invoice.compon
 import { InvoiceActionsRendererComponent } from './invoice/invoice-actions-renderer/invoice-actions-renderer.component';
 import { InvoiceService } from './invoice/invoice.service';
 import { IncomeService } from './income/income.service';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   entryComponents: [
@@ -70,7 +71,8 @@ import { IncomeService } from './income/income.service';
     CreateInvoiceComponent,
     DeleteInvoiceComponent,
     EditInvoiceComponent,
-    InvoiceActionsRendererComponent
+    InvoiceActionsRendererComponent,
+    ErrorPageComponent
   ],
   imports: [
 BrowserModule,
