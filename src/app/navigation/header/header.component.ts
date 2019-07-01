@@ -14,8 +14,8 @@ export class HeaderComponent implements OnInit {
   constructor(private _authService: AuthService) { }
 
   ngOnInit() {
-    console.log(this._authService.userID);
-    this.isAuthenticated = this._authService.isAuthenticated();
+    // console.log(this._authService.userID);
+    // this.isAuthenticated = this._authService.isAuthenticated();
   }
 
   onToggleSidenav() {
