@@ -28,8 +28,8 @@ export class InvoiceActionsRendererComponent implements ICellRendererAngularComp
   editInvoice() {
     const dialogRef = this.dialog.open(EditInvoiceComponent, {
       autoFocus: false,
-      disableClose: true,
-      minWidth: '50%',
+      disableClose: false,
+      minWidth: '20%',
       height: '50%',
       data: {
         invoice: this.params.node.data
@@ -45,9 +45,9 @@ export class InvoiceActionsRendererComponent implements ICellRendererAngularComp
   deleteInvoice() {
     const dialogRef = this.dialog.open(DeleteInvoiceComponent, {
       autoFocus: false,
-      disableClose: true,
-      minWidth: '50%',
-      height: '50%',
+      disableClose: false,
+      minWidth: '20%',
+      height: '20%',
       data: {
         invoice: this.params.node.data
       }

@@ -29,9 +29,9 @@ export class ExpenseActionsRendererComponent  implements ICellRendererAngularCom
   editExpense() {
     const dialogRef = this.dialog.open(EditExpenseComponent, {
       autoFocus: false,
-      disableClose: true,
-      minWidth: '50%',
-      height: '50%',
+      disableClose: false,
+      minWidth: '20%',
+      height: '40%',
       data: {
         expense: this.params.node.data
       }
@@ -47,9 +47,9 @@ export class ExpenseActionsRendererComponent  implements ICellRendererAngularCom
   deleteExpense() {
     const dialogRef = this.dialog.open(DeleteExpenseComponent, {
       autoFocus: false,
-      disableClose: true,
-      minWidth: '50%',
-      height: '50%',
+      disableClose: false,
+      minWidth: '20%',
+      height: '20%',
       data: {
         expense: this.params.node.data
       }

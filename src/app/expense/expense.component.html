@@ -1,5 +1,14 @@
 <div class="app">
-  <button mat-raised-button (click)="newExpensePopUp()">Adaugă cheltuială</button>
+    <div class="card" style="text-align: center">
+        <h5 class="card-title">Cheltuieli și costuri variabile</h5>
+        <div class="card-body" >
+         <p> Aici îți poți adăuga cheltuielile zilnice și alte costuri variabile! </p>
+         <p>În plus, poți adăuga detalii suplimentare despre cheltuielile făcute pentru a observa mai bine tiparele acestora,
+           în funcție de categorii sau de persoane! </p>
+          <button mat-raised-button class="btn btn-primary" (click)="newExpensePopUp()">Adaugă cheltuială</button>
+        </div>
+        
+      </div>
   <div class="row">
     <ag-grid-angular class="col-md-6" domLayout="autoHeight" class="ag-theme-balham" [rowData]="rowData"
       style="width:50%; padding-left:3%;" [columnDefs]="columnDefs" [suppressHorizontalScroll]="true"

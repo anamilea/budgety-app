@@ -8,6 +8,7 @@ import { DatePipe } from '@angular/common';
 import { Expense } from '../models/expense.interface';
 import * as Highcharts from 'highcharts';
 import { Categories } from '../models/categories.interface';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-expense',
@@ -24,21 +25,9 @@ export class ExpenseComponent implements OnInit {
   total = 0;
   isChartReady = false;
   categories = [
-    { name: 'Mâncare' },
-    { name: 'Cumpărături' },
-    { name: 'Haine' },
-    { name: 'Pentru casă' },
-    { name: 'Cadouri' },
-    { name: 'Mașină' },
-    { name: 'Altele' }
   ];
   people = [
-    'Mama',
-    'Tata',
-    'Ana',
-    'Diana',
-    'Cristi', 
-    'Iulia'];
+];
   chartCategories: any;
   highcharts;
   highchartsPeople;
@@ -50,7 +39,7 @@ export class ExpenseComponent implements OnInit {
 
 
   constructor(private _expenseService: ExpenseService, public dialog: MatDialog, private _authService: AuthService,
-    public datePipe: DatePipe) {
+    private _usersService: UsersService,  public datePipe: DatePipe) {
     this.columnDefs = [
       { headerName: 'Denumire', field: 'name', filter: 'agTextColumnFilter', sortable: true },
       { headerName: 'Valoare (RON)', field: 'value', filter: 'agNumberColumnFilter', sortable: true },
@@ -78,6 +67,14 @@ export class ExpenseComponent implements OnInit {
   setRowData() {
     this._expenseService.readExpenses(this._authService.userID).subscribe(res => {
       this.rowData = res;
+     
+    });
+    this._usersService.readPeople(this._authService.userID).subscribe(res => {
+      this.people = res.map(obj => obj.name.replace(/\s/g,''));
+    });
+
+    this._usersService.readCategories(this._authService.userID).subscribe(res => {
+      this.categories = res.map(obj => obj.name.replace(/\s/g,''));
       this.setChartData();
     });
   }
@@ -90,10 +87,10 @@ export class ExpenseComponent implements OnInit {
   setChartData() {
 
     this.categories.forEach(category => {
-      this.count[category.name] = 0;
+      this.count[category] = 0;
     });
 
-    this.people.forEach(person => {
+    this.people.forEach(person => {   
       this.count[person] = 0;
     });
 
@@ -114,7 +111,7 @@ export class ExpenseComponent implements OnInit {
 
     //set data pt chart
     this.categories.forEach(category => {
-      this.categoriesData.push([category.name, this.count[category.name]]);
+      this.categoriesData.push([category, this.count[category]]);
     });
 
     //set data pt chart
@@ -122,9 +119,7 @@ export class ExpenseComponent implements OnInit {
       this.peopleData.push([person, this.count[person]]);
     });
 
-
     this.setCategoriesChart();
-
     this.setPeopleChart();
 
   }
@@ -195,9 +190,9 @@ export class ExpenseComponent implements OnInit {
   newExpensePopUp(): void {
     const dialogRef = this.dialog.open(CreateExpenseComponent, {
       autoFocus: false,
-      disableClose: true,
+      disableClose: false,
       minWidth: '50%',
-      height: '50%'
+      height: '55%'
     });
     dialogRef.afterClosed().subscribe(res => {
       if (res) {

@@ -28,8 +28,8 @@ export class IncomeActionsRendererComponent implements ICellRendererAngularComp 
   editIncome() {
     const dialogRef = this.dialog.open(EditIncomeComponent, {
       autoFocus: false,
-      disableClose: true,
-      minWidth: '50%',
+      disableClose: false,
+      minWidth: '20%',
       height: '50%',
       data: {
         income: this.params.node.data
@@ -45,9 +45,9 @@ export class IncomeActionsRendererComponent implements ICellRendererAngularComp 
   deleteIncome() {
     const dialogRef = this.dialog.open(DeleteIncomeComponent, {
       autoFocus: false,
-      disableClose: true,
-      minWidth: '50%',
-      height: '50%',
+      disableClose: false,
+      minWidth: '20%',
+      height: '20%',
       data: {
         income: this.params.node.data
       }

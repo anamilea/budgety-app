@@ -7,6 +7,7 @@ import { Expense } from 'src/app/models/expense.interface';
 import { ExpenseService } from '../expense.service';
 import { ExpenseComponent } from '../expense.component';
 import { AuthService } from 'src/app/auth/auth.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-create-expense',
@@ -21,8 +22,12 @@ export class CreateExpenseComponent implements OnInit {
   categories : any[];
   peopleData: any[];
   isVisible = false;
+  peopleList = [];
+  categoriesList= [];
+  startDate = new Date();
+  maxDate= new Date(new Date().setMonth(new Date().getMonth() + 1));
 
-  constructor(private _expenseService: ExpenseService,
+  constructor(private _expenseService: ExpenseService, private _usersService: UsersService,
     public snotify: SnotifyService,
     public dialogRef: MatDialogRef<ExpenseComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -31,30 +36,22 @@ export class CreateExpenseComponent implements OnInit {
     }
 
   ngOnInit() {
+    console.log(this.startDate);
+    console.log(this.maxDate);
     this.expenseForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
       price: new FormControl('', [Validators.required]),
-      date:  new FormControl('', [Validators.required]),
+      date:  new FormControl(this.startDate, [Validators.required]),
       category: new FormControl('',[]),
       people: new FormControl('',[]),
     });
-    this.categories = [ 
-      { name : 'Mâncare'},
-      { name : 'Cumpărături'},
-      { name : 'Haine'},
-      { name : 'Pentru casă'},
-      { name : 'Cadouri'},
-      { name : 'Mașină'},
-      {name: 'Altele'}
-    ]
-    this.peopleData = [ 
-      { name : 'Mama'},
-      { name : 'Tata'},
-      { name : 'Ana'},
-      { name : 'Diana'},
-      { name : 'Cristi'},
-      {name: 'Iulia'}
-    ]
+    this._usersService.readPeople(this._authService.userID).subscribe(res => {
+      this.peopleList = res.map(obj => obj.name.replace(/\s/g,''));
+    });
+
+    this._usersService.readCategories(this._authService.userID).subscribe(res => {
+      this.categoriesList = res.map(obj => obj.name.replace(/\s/g,''));
+    });
   }
 
   get name() { return this.expenseForm.get('name'); }

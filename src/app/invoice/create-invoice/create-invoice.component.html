@@ -31,7 +31,7 @@
 
         <mat-form-field>
           <mat-label>Valoare</mat-label>
-          <input matInput formControlName="price" required> 
+          <input matInput formControlName="price" required [min]="1"> 
         </mat-form-field>
         <div>
           <button mat-button matStepperNext>Pasul următor</button>
@@ -51,8 +51,8 @@
               </mat-select>
           </mat-form-field>
           <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
+            <button mat-button matStepperPrevious>Înapoi</button>
+            <button mat-button matStepperNext>Pasul următor</button>
           </div>
         </mat-step>
 
@@ -62,10 +62,13 @@
         <div>
           <button mat-button [disabled]="submittedForm" (click)="saveInvoice()"> Adaugă cost</button>
           <button type="button" mat-button (click)="linearVerticalStepper.reset()">Resetează</button>
-          <button type="button" mat-button (click)="close()">Anulează</button>
+      
         </div>
       </mat-step>
     </mat-vertical-stepper>
+    <mat-dialog-actions style="float: right;">
+        <button mat-button type="button" mat-button (click)="close()">Anulează</button>
+      </mat-dialog-actions>
   </form>
   
   

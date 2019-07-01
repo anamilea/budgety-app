@@ -1,9 +1,19 @@
 <div class="app">
-  <button mat-raised-button (click)="newIncomePopUp()">Adaugă venit</button>
-  <div class="row">
-    <ag-grid-angular class="col-md-10" domLayout="autoHeight" class="ag-theme-balham" [rowData]="rowData"
-      style="width:50%; padding-left:3%;" [columnDefs]="columnDefs" [suppressHorizontalScroll]="true"
-      (gridReady)="onGridReady($event)" [frameworkComponents]="frameworkComponents">
-    </ag-grid-angular>
+    <div class="card" style="text-align: center">
+      <h5 class="card-title">Venituri și bugete</h5>
+      <div class="card-body" >
+       <p> În această secțiune îți poți adăuga veniturile! </p>
+       <p>Acestea vor fi adăugate automat în balanța ta lunară. </p>
+        <button mat-raised-button class="btn btn-primary" (click)="newIncomePopUp()">Adaugă venituri</button>
+      </div>
+      
+    </div>
+  
+    <div>
+      <ag-grid-angular domLayout="autoHeight" class="ag-theme-balham" [rowData]="rowData"
+        style="width:100%; padding-left:3%; padding-right: 3%" [columnDefs]="columnDefs" [suppressHorizontalScroll]="true"
+        (gridReady)="onGridReady($event)" [frameworkComponents]="frameworkComponents">
+      </ag-grid-angular>
+    </div>
   </div>
-</div>
+  

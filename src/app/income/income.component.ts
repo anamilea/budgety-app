@@ -60,9 +60,9 @@ export class IncomeComponent implements OnInit {
   newIncomePopUp(): void {
     const dialogRef = this.dialog.open(CreateIncomeComponent, {
       autoFocus: false,
-      disableClose: true,
+      disableClose: false,
       minWidth: '50%',
-      height: '50%'
+      height: '40%'
     });
     dialogRef.afterClosed().subscribe(res => {
       if (res) {

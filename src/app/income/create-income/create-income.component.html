@@ -1,20 +1,18 @@
 <h1 mat-dialog-title>Adaugă venit</h1>
 <div class="form-fields">
   <form [formGroup]="incomeForm" (ngSubmit)="saveIncome()">
-    <label for="name" class="enter-name">
-      <span> Denumire</span>
-    </label>
-    <input type="text" formControlName="name" placeholder="ex: Mancare">
-    <label for="price" class="enter-price">
-      <span> Valoare</span>
-    </label>
-    <input type="number" formControlName="price" placeholder="ex: 50">
+      <mat-form-field style="width: 100%;"> 
+    <input matInput type="text" formControlName="name" placeholder="Denumire">
+    </mat-form-field>
+    <mat-form-field style="width: 100%;"> 
+    <input matInput type="number" formControlName="price" placeholder="Valoare" [min]="1">
+    </mat-form-field>
     <div class="error">
       <mat-error *ngIf="hasError()">{{getError()}}</mat-error>
     </div>
-    <mat-dialog-actions>
-      <button type=submit [disabled]="submittedForm">Salvează</button>
-      <button (click)="close()">Anulează</button>
+    <mat-dialog-actions style="float: right;">
+      <button mat-button type=submit [disabled]="submittedForm">Salvează</button>
+      <button mat-button (click)="close()">Anulează</button>
     </mat-dialog-actions>
   </form>
 </div>

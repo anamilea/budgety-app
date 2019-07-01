@@ -67,9 +67,9 @@ export class InvoiceComponent implements OnInit {
   newInvoicePopUp(): void {
     const dialogRef = this.dialog.open(CreateInvoiceComponent, {
       autoFocus: false,
-      disableClose: true,
+      disableClose: false,
       minWidth: '50%',
-      height: '50%'
+      height: '55%'
     });
     dialogRef.afterClosed().subscribe(res => {
       if (res) {

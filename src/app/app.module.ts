@@ -15,8 +15,6 @@ import { SidenavComponent } from './navigation/sidenav/sidenav.component';
 import { IncomeComponent } from './income/income.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { ReportsComponent } from './reports/reports.component';
-
-import { EconomiesComponent } from './economies/economies.component';
 import { ExpenseActionsRendererComponent } from './expense/expense-actions-renderer/expense-actions-renderer.component';
 import { CreateExpenseComponent } from './expense/create-expense/create-expense.component';
 import { DeleteExpenseComponent } from './expense/delete-expense/delete-expense.component';
@@ -35,29 +33,20 @@ import { CreateInvoiceComponent } from './invoice/create-invoice/create-invoice.
 import { DeleteInvoiceComponent } from './invoice/delete-invoice/delete-invoice.component';
 import { EditInvoiceComponent } from './invoice/edit-invoice/edit-invoice.component';
 import { InvoiceActionsRendererComponent } from './invoice/invoice-actions-renderer/invoice-actions-renderer.component';
-import { EconomiesActionsRendererComponent } from './economies/economies-actions-renderer/economies-actions-renderer.component';
-import { EditEconomiesComponent } from './economies/edit-economies/edit-economies.component';
-import { DeleteEconomiesComponent } from './economies/delete-economies/delete-economies.component';
-import { CreateEconomiesComponent } from './economies/create-economies/create-economies.component';
 import { InvoiceService } from './invoice/invoice.service';
 import { IncomeService } from './income/income.service';
-import { EconomiesService } from './economies/economies.service';
-
 
 @NgModule({
   entryComponents: [
     CreateExpenseComponent,
     EditExpenseComponent,
     DeleteExpenseComponent,
-    CreateEconomiesComponent,
-    EditEconomiesComponent,
-    DeleteEconomiesComponent,
     CreateIncomeComponent,
     EditIncomeComponent,
     DeleteIncomeComponent,
     CreateInvoiceComponent,
     EditInvoiceComponent,
-    DeleteInvoiceComponent,
+    DeleteInvoiceComponent
   ],
   declarations: [
     AppComponent,
@@ -70,7 +59,6 @@ import { EconomiesService } from './economies/economies.service';
     IncomeComponent,
     InvoiceComponent,
     ReportsComponent,
-    EconomiesComponent,
     ExpenseActionsRendererComponent,
     CreateExpenseComponent,
     DeleteExpenseComponent,
@@ -82,15 +70,11 @@ import { EconomiesService } from './economies/economies.service';
     CreateInvoiceComponent,
     DeleteInvoiceComponent,
     EditInvoiceComponent,
-    InvoiceActionsRendererComponent,
-    EconomiesActionsRendererComponent,
-    EditEconomiesComponent,
-    DeleteEconomiesComponent,
-    CreateEconomiesComponent
+    InvoiceActionsRendererComponent
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
+BrowserModule,
+BrowserAnimationsModule,
     HttpClientModule,
     CommonModule,
     SnotifyModule,
@@ -100,12 +84,10 @@ import { EconomiesService } from './economies/economies.service';
     HighchartsChartModule,
     AppRoutingModule,
     AgGridModule.withComponents([ExpenseActionsRendererComponent,
-      IncomeActionsRendererComponent, EconomiesActionsRendererComponent,
-      InvoiceActionsRendererComponent])
+      IncomeActionsRendererComponent, InvoiceActionsRendererComponent])
   ],
   providers: [
     ExpenseService,
-    EconomiesService,
     InvoiceService,
     IncomeService,
     SnotifyService,

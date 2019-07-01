@@ -7,18 +7,17 @@ import { ExpenseComponent } from './expense/expense.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { IncomeComponent } from './income/income.component';
 import { InvoiceComponent } from './invoice/invoice.component';
-import { EconomiesComponent } from './economies/economies.component';
 import { ReportsComponent } from './reports/reports.component';
 
 const routes: Routes = [
   {path: 'success', component: HomepageComponent},
+  {path: 'homepage', component: HomepageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'expenses', component: ExpenseComponent},
   {path: 'incomes', component: IncomeComponent},
   {path: 'invoices', component: InvoiceComponent},
-  {path: 'reports', component: ReportsComponent},
-  {path: 'economies', component: EconomiesComponent}
+  {path: 'reports', component: ReportsComponent}
 ];
 
 @NgModule({
