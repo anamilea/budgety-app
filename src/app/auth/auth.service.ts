@@ -87,7 +87,7 @@ export class AuthService {
     this._userID = '';
     
     this.auth0.logout({
-      returnTo: window.location.origin
+      returnTo: '/login'
     });
   }
 
