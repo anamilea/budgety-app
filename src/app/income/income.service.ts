@@ -12,14 +12,12 @@ export class IncomeService {
   constructor(private _http: HttpClient) { }
    
   createIncome(income: Income, id: string): Observable<any> {
-    id = 'auth0|5cffd2df7a541c0d42e41522';
     return this._http.post(`${environment.apiUri}/api/income/${id}`, income).pipe(
           catchError((err) => observableThrowError(err))
       );
   }
 
   readIncome(id: string): Observable<any> {
-    id = 'auth0|5cffd2df7a541c0d42e41522';
         return this._http.get(`${environment.apiUri}/api/income/${id}`).pipe(
           catchError((err) => observableThrowError(err))
       );

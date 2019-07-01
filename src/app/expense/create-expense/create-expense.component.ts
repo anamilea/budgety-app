@@ -36,8 +36,6 @@ export class CreateExpenseComponent implements OnInit {
     }
 
   ngOnInit() {
-    console.log(this.startDate);
-    console.log(this.maxDate);
     this.expenseForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
       price: new FormControl('', [Validators.required]),

@@ -11,7 +11,7 @@ import { ReportsComponent } from './reports/reports.component';
 
 const routes: Routes = [
   {path: 'success', component: HomepageComponent},
-  {path: 'homepage', component: HomepageComponent},
+  {path: '', component: HomepageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'expenses', component: ExpenseComponent},

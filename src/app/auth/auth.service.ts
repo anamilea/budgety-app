@@ -49,7 +49,7 @@ export class AuthService {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         this.localLogin(authResult);
-        this.router.navigate(['/expenses']);
+        this.router.navigate(['/']);
       } else if (err) {
         console.log(err);
       }
