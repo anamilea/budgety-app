@@ -66,8 +66,11 @@ export class AuthService {
     this._userID = authResult.idTokenPayload.sub;
     this._expiresAt = expiresAt;
     this._authenticated = true;
+    console.log("TCL: AuthService -> authResult.idTokenPayload", authResult.idTokenPayload);
+    console.log("TCL: AuthService -> authResult", authResult);
   }
 
+    
   public renewTokens(): void {
     this.auth0.checkSession({}, (err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
