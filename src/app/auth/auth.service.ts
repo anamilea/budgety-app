@@ -9,11 +9,13 @@ import { environment } from 'src/environments/environment.prod';
 export class AuthService {
 
   private _idToken: string;
-  private _accessToken: string;
+   private _accessToken: string;
   private _expiresAt: number;
   private _userID: string;
   private _authenticated: boolean;
 
+
+  
   auth0 = new auth0.WebAuth({
     clientID: 'uFINHhYMBik0xiEKH011FLKIFloyYsEW',
     domain: 'dawn-tree-5494.eu.auth0.com',
@@ -66,8 +68,11 @@ export class AuthService {
     this._userID = authResult.idTokenPayload.sub;
     this._expiresAt = expiresAt;
     this._authenticated = true;
-    console.log("TCL: AuthService -> authResult.idTokenPayload", authResult.idTokenPayload);
+    console.log("TCL: AuthService -> id", authResult.idTokenPayload);
     console.log("TCL: AuthService -> authResult", authResult);
+    console.log("TCL: AuthService ->  _idToken",  this._idToken);
+    console.log("TCL: AuthService -> _accessToken", this._accessToken);
+    console.log("TCL: AuthService -> _userID", this._userID);
   }
 
     
