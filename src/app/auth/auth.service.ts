@@ -19,7 +19,7 @@ export class AuthService {
   auth0 = new auth0.WebAuth({
     clientID: 'uFINHhYMBik0xiEKH011FLKIFloyYsEW',
     domain: 'dawn-tree-5494.eu.auth0.com',
-    responseType: 'token id_token',
+    responseType: 'token id_token username',
     redirectUri: environment.apiUri + '/success',
     scope: 'openid'
   });
