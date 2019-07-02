@@ -1,7 +1,6 @@
 <div class="app">
-  <div class="card" style="text-align: center">
-    <h5 class="card-title">Facturi și plăți fixe</h5>
-    <div class="card-body" >
+    <div class="jumbotron">
+    <h1>Facturi și plăți fixe</h1>
      <p> Aici îți poți adăuga facturile și alte costuri fixe precum întreținere, chirie, rată etc.! </p>
      <p>Sumele vor fi calculate
       automat în funcție
@@ -9,7 +8,6 @@
       cheltuieli! </p>
       <button mat-raised-button class="btn btn-primary" (click)="newInvoicePopUp()">Adaugă costuri fixe</button>
     </div>
-  </div>
 
   <div>
     <ag-grid-angular domLayout="autoHeight" class="ag-theme-balham" [rowData]="rowData"

@@ -1,29 +1,47 @@
 <div class="app">
-    <div class="card" style="text-align: center">
-        <h5 class="card-title">Cheltuieli și costuri variabile</h5>
-        <div class="card-body" >
+    <div class="jumbotron">
+        <h1>Cheltuieli și costuri variabile</h1>
          <p> Aici îți poți adăuga cheltuielile zilnice și alte costuri variabile! </p>
          <p>În plus, poți adăuga detalii suplimentare despre cheltuielile făcute pentru a observa mai bine tiparele acestora,
            în funcție de categorii sau de persoane! </p>
-          <button mat-raised-button class="btn btn-primary" (click)="newExpensePopUp()">Adaugă cheltuială</button>
-        </div>
-        
+          <button mat-raised-button class="btn btn-primary" (click)="newExpensePopUp()">Adaugă cheltuială</button>       
       </div>
   <div class="row">
     <ag-grid-angular class="col-md-6" domLayout="autoHeight" class="ag-theme-balham" [rowData]="rowData"
       style="width:50%; padding-left:3%;" [columnDefs]="columnDefs" [suppressHorizontalScroll]="true"
       (gridReady)="onGridReady($event)" [frameworkComponents]="frameworkComponents">
     </ag-grid-angular>
-    <div class="col-md-6" *ngIf="isHighchartAvailable">
-      <div class="row">
-        <highcharts-chart [Highcharts]="highcharts" [options]="chartOptions"
-          style="width: 100%; height: 400px; display: block;" *ngIf="isChartReady">
-        </highcharts-chart>
+  
+  <div class="col-md-6">
+      <div class="row" style="padding-left: 10%;">
+        <h5>Lista persoane pentru cheltuieli 
+          <button mat-button (click)="peopleInput()">  + </button>
+          <input matInput *ngIf="isPeopleVisible" type="text" placeholder="Introdu nume categorie" (keyup.enter)="addPeople($event)"> 
+        </h5>
+        <table class="table table-hover table-sm" >
+          <tbody>
+            <ng-container *ngFor="let person of people">
+              <tr>
+                <th scope="row">{{person}}</th>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
       </div>
-      <div class="row">
-        <highcharts-chart [Highcharts]="highchartsPeople" [options]="chartOptionsPeople"
-          style="width: 100%; height: 400px; display: block;" *ngIf="isChartReady">
-        </highcharts-chart>
+      <div class="row" style="padding-left: 10%;">
+        <h5>Lista categorii pentru cheltuieli
+            <button mat-button (click)="categoryInput()">  + </button>
+            <input matInput *ngIf="isCategoryVisible"   type="text" placeholder="Introdu nume persoană" (keyup.enter)="addCategory($event)"> 
+        </h5>
+        <table class="table table-hover table-sm" >
+          <tbody>
+            <ng-container *ngFor="let category of categories">
+              <tr>
+                <th scope="row">{{category}}</th>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

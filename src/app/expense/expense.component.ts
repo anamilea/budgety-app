@@ -23,19 +23,16 @@ export class ExpenseComponent implements OnInit {
   gridOptions;
   count = [];
   total = 0;
-  isChartReady = false;
+
   categories = [
   ];
   people = [
 ];
   chartCategories: any;
-  highcharts;
-  highchartsPeople;
-  chartOptions;
-  chartOptionsPeople;
-  categoriesData = [];
-  peopleData = [];
+
   isHighchartAvailable = false;
+  isCategoryVisible = false;
+  isPeopleVisible = false;
 
 
 
@@ -74,7 +71,6 @@ export class ExpenseComponent implements OnInit {
       if(res) {
         this.people = res.map(obj => obj.name.replace(/\s/g,''));
       }
- 
     });
 
     this._usersService.readCategories(this._authService.userID).subscribe(res => {
@@ -83,8 +79,6 @@ export class ExpenseComponent implements OnInit {
         this.isHighchartAvailable = true;
         this.setChartData();
       }
-      
- 
     });
   }
 
@@ -118,83 +112,11 @@ export class ExpenseComponent implements OnInit {
       this.total += expense.value;
     });
 
-    //set data pt chart
-    this.categories.forEach(category => {
-      this.categoriesData.push([category, this.count[category]]);
-    });
-
-    //set data pt chart
-    this.people.forEach( person => {
-      this.peopleData.push([person, this.count[person]]);
-    });
-
-    this.setCategoriesChart();
-    this.setPeopleChart();
+   
 
   }
 
-  private setPeopleChart() {
-    this.highchartsPeople = Highcharts;
-    this.chartOptionsPeople = {
-      chart: {
-        plotBorderWidth: null,
-        plotShadow: false
-      },
-      title: {
-        text: 'Total cheltuieli în funcție de persoane'
-      },
-      tooltip: {
-        pointFormat: '{series.name}: {point.y:.1f} RON.'
-      },
-      plotOptions: {
-        pie: {
-          allowPointSelect: true,
-          cursor: 'pointer',
-          dataLabels: {
-            enabled: false
-          },
-          showInLegend: true
-        }
-      },
-      series: [{
-        type: 'pie',
-        name: 'Suma cheltuită:',
-        data: this.peopleData
-      }]
-    };
-  }
 
-  private setCategoriesChart() {
-    this.isChartReady = true;
-    this.highcharts = Highcharts;
-    this.chartOptions = {
-      chart: {
-        plotBorderWidth: null,
-        plotShadow: false
-      },
-      title: {
-        text: 'Total cheltuieli pe categorii'
-      },
-      tooltip: {
-        pointFormat: '{series.name}: {point.y:.1f} RON.'
-      },
-      plotOptions: {
-        pie: {
-          allowPointSelect: true,
-          cursor: 'pointer',
-          dataLabels: {
-            enabled: false
-          },
-          showInLegend: true
-        }
-      },
-      series: [{
-        type: 'pie',
-        name: 'Suma cheltuită:',
-        data: this.categoriesData
-      }]
-    };
-  }
 
   newExpensePopUp(): void {
     const dialogRef = this.dialog.open(CreateExpenseComponent, {
@@ -217,6 +139,31 @@ export class ExpenseComponent implements OnInit {
         // });
         
       }
+    });
+  }
+
+  //categories and people
+
+  categoryInput() {
+    this.isCategoryVisible = true;
+  }
+
+  peopleInput() {
+    this.isPeopleVisible = true;
+  }
+
+  addPeople(event: any) {
+    this._usersService.createPeople(this._authService.userID, event.target.value).subscribe(res => {
+      this.isPeopleVisible = false;
+      this.people.push(res[0].name);
+    });
+
+  }
+
+  addCategory(event: any) {
+    this._usersService.createCategory(this._authService.userID, event.target.value).subscribe(res => {
+      this.isCategoryVisible = false;
+      this.categories.push(res[0].name);
     });
   }
 }
