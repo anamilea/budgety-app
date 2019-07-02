@@ -46,7 +46,6 @@ export class EditIncomeComponent implements OnInit {
     if (this.isFormValid()) {
       this.submittedForm = true;
     let income: Income = this.incomeForm.value;
-    
       this._incomeService.updateIncome(income, this.data.income.id).subscribe(
         res => {
           this._dialogRef.close(income);

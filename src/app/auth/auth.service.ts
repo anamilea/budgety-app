@@ -67,12 +67,7 @@ export class AuthService {
     this._idToken = authResult.idToken;
     this._userID = authResult.idTokenPayload.sub;
     this._expiresAt = expiresAt;
-    this._authenticated = true;
-    console.log("TCL: AuthService -> id", authResult.idTokenPayload);
-    console.log("TCL: AuthService -> authResult", authResult);
-    console.log("TCL: AuthService ->  _idToken",  this._idToken);
-    console.log("TCL: AuthService -> _accessToken", this._accessToken);
-    
+    this._authenticated = true;  
   }
 
     

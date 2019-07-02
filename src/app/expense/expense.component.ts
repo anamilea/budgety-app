@@ -150,9 +150,7 @@ export class ExpenseComponent implements OnInit {
   addPeople(event: any) {
     this._usersService.createPeople(this._authService.userID, event.target.value).subscribe(res => {
       this.isPeopleVisible = false;
-      console.log(res);
       this.people.push(res[0].name);
-      console.log(this.people);
     });
 
   }
@@ -160,9 +158,7 @@ export class ExpenseComponent implements OnInit {
   addCategory(event: any) {
     this._usersService.createCategory(this._authService.userID, event.target.value).subscribe(res => {
       this.isCategoryVisible = false;
-      console.log(res);
       this.categories.push(res[0].name);
-      console.log(this.categories);
     });
   }
 }

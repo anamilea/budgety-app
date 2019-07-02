@@ -26,7 +26,7 @@ export class EditExpenseComponent implements OnInit {
   ngOnInit() {
     this.expenseForm = new FormGroup({
       name: new FormControl(this.data.expense.name, [Validators.required]),
-      value: new FormControl(this.data.expense.value,  [Validators.required]),
+      value: new FormControl(this.data.expense.value, [Validators.required]),
     });
   }
 
@@ -46,8 +46,10 @@ export class EditExpenseComponent implements OnInit {
   saveExpenseUpdates() {
     if (this.isFormValid()) {
       this.submittedForm = true;
-    let expense: Expense = this.expenseForm.value;
+      let expense: Expense = this.expenseForm.value;
       expense.date = this.data.expense.date;
+      expense.people = this.data.expense.people;
+      expense.category = this.data.expense.category;
       this._expenseService.updateExpense(expense, this.data.expense.id).subscribe(
         res => {
           this._dialogRef.close(expense);
@@ -61,9 +63,9 @@ export class EditExpenseComponent implements OnInit {
   }
 
   setErrorMessages(err: any) {
-      this._dialogRef.close();
-      this._snotify.error('The server encountered an error while processing the request.');
-    }
+    this._dialogRef.close();
+    this._snotify.error('The server encountered an error while processing the request.');
+  }
 
   close() {
     this._dialogRef.close();
