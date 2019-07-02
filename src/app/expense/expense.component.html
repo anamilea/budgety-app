@@ -15,9 +15,7 @@
     <div class="col-md-6">
       <div class="row" style="padding-left: 10%;">
         <h5>Lista persoane pentru cheltuieli
-          <button mat-icon-button color="primary" (click)="peopleInput()">
-            <mat-icon>playlist_add</mat-icon>
-          </button>
+          <button mat-raised-button class="btn btn-primary" (click)="peopleInput()"> + </button>
           <mat-form-field *ngIf="isPeopleVisible"  style="width:100%">
           <input matInput  type="text" placeholder="Introdu nume persoană" 
             (keyup.enter)="addPeople($event)">
@@ -35,9 +33,7 @@
       </div>
       <div class="row" style="padding-left: 10%;">
         <h5>Lista categorii pentru cheltuieli
-          <button mat-icon-button color="primary" (click)="categoryInput()">
-            <mat-icon>playlist_add</mat-icon>
-          </button>
+          <button mat-raised-button class="btn btn-primary" (click)="categoryInput()"> + </button>
           <mat-form-field *ngIf="isCategoryVisible" style="width:100%">
           <input matInput type="text" placeholder="Introdu categorie" 
             (keyup.enter)="addCategory($event)">
