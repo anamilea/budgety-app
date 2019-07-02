@@ -19,7 +19,7 @@ export class AuthService {
   auth0 = new auth0.WebAuth({
     clientID: 'uFINHhYMBik0xiEKH011FLKIFloyYsEW',
     domain: 'dawn-tree-5494.eu.auth0.com',
-    responseType: 'token id_token username',
+    responseType: 'token id_token',
     redirectUri: environment.apiUri + '/success',
     scope: 'openid'
   });
@@ -72,7 +72,7 @@ export class AuthService {
     console.log("TCL: AuthService -> authResult", authResult);
     console.log("TCL: AuthService ->  _idToken",  this._idToken);
     console.log("TCL: AuthService -> _accessToken", this._accessToken);
-    console.log("TCL: AuthService -> _userID", this._userID);
+    
   }
 
     
