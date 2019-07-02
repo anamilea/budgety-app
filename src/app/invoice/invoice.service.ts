@@ -12,14 +12,12 @@ export class InvoiceService {
   constructor(private _http: HttpClient) { }
 
   createInvoice(invoice: Invoice, id: string): Observable<any> {
-    id= "auth0|5cffd2df7a541c0d42e41522";
     return this._http.post(`${environment.apiUri}/api/invoice/${id}`, invoice).pipe(
         catchError((err) => observableThrowError(err))
     );
 }
 
 readInvoice(id: string): Observable<any> {
-    id= "auth0|5cffd2df7a541c0d42e41522";
     return this._http.get(`${environment.apiUri}/api/invoice/${id}`).pipe(
         catchError((err) => observableThrowError(err))
     );
@@ -27,14 +25,12 @@ readInvoice(id: string): Observable<any> {
 
 
 updateInvoice(invoice: Invoice, id: string): Observable<any> {
-    id= "auth0|5cffd2df7a541c0d42e41522";
     return this._http.put(`${environment.apiUri}/api/invoice/${id}`, invoice).pipe(
         catchError((err) => observableThrowError(err))
     );
 }
 
 deleteInvoice(id: string): Observable<any> {
-    id= "auth0|5cffd2df7a541c0d42e41522";
     return this._http.delete(`${environment.apiUri}/api/invoice/${id}`).pipe(
         catchError((err) => observableThrowError(err))
     );
