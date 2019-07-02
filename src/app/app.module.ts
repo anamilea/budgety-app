@@ -14,7 +14,6 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SidenavComponent } from './navigation/sidenav/sidenav.component';
 import { IncomeComponent } from './income/income.component';
 import { InvoiceComponent } from './invoice/invoice.component';
-import { ReportsComponent } from './reports/reports.component';
 import { ExpenseActionsRendererComponent } from './expense/expense-actions-renderer/expense-actions-renderer.component';
 import { CreateExpenseComponent } from './expense/create-expense/create-expense.component';
 import { DeleteExpenseComponent } from './expense/delete-expense/delete-expense.component';
@@ -59,7 +58,6 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     SidenavComponent,
     IncomeComponent,
     InvoiceComponent,
-    ReportsComponent,
     ExpenseActionsRendererComponent,
     CreateExpenseComponent,
     DeleteExpenseComponent,

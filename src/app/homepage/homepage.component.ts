@@ -18,6 +18,7 @@ export class HomepageComponent implements OnInit {
   dataCategories = [];
   isCategoryVisible = false;
   isPeopleVisible = false;
+  isChartAvailable = false;
 
   constructor(private _authService: AuthService, private _usersService: UsersService, private _expensesService: ExpenseService) {
     this._authService.handleAuthentication();

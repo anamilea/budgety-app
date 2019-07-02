@@ -35,6 +35,7 @@ export class ExpenseComponent implements OnInit {
   chartOptionsPeople;
   categoriesData = [];
   peopleData = [];
+  isHighchartAvailable = false;
 
 
 
@@ -70,12 +71,20 @@ export class ExpenseComponent implements OnInit {
      
     });
     this._usersService.readPeople(this._authService.userID).subscribe(res => {
-      this.people = res.map(obj => obj.name.replace(/\s/g,''));
+      if(res) {
+        this.people = res.map(obj => obj.name.replace(/\s/g,''));
+      }
+ 
     });
 
     this._usersService.readCategories(this._authService.userID).subscribe(res => {
-      this.categories = res.map(obj => obj.name.replace(/\s/g,''));
-      this.setChartData();
+      if(res){
+        this.categories = res.map(obj => obj.name.replace(/\s/g,''));
+        this.isHighchartAvailable = true;
+        this.setChartData();
+      }
+      
+ 
     });
   }
 

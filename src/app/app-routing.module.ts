@@ -7,7 +7,6 @@ import { ExpenseComponent } from './expense/expense.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { IncomeComponent } from './income/income.component';
 import { InvoiceComponent } from './invoice/invoice.component';
-import { ReportsComponent } from './reports/reports.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 
 const routes: Routes = [
@@ -17,9 +16,9 @@ const routes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'expenses', component: ExpenseComponent},
   {path: 'incomes', component: IncomeComponent},
-  {path: 'invoices', component: InvoiceComponent},
-  {path: 'reports', component: ReportsComponent},
-  {path: 'error', component: ErrorPageComponent}
+  {path: 'invoices', component: InvoiceComponent},  
+  {path: 'error', component: ErrorPageComponent},
+  { path: "**", redirectTo: '/error' }
 ];
 
 @NgModule({

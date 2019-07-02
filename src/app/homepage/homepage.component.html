@@ -1,40 +1,45 @@
-<div class="card" style="text-align: center">
-  <h5 class="card-title">Bine ai venit pe Budgety!</h5>
-  <p> Ajutorul tău pentru analiza și monitorizarea cheltuielilor</p>
-  <div class="card-body">
-    <p>Poți adăuga cheltuieli, costuri fixe și venituri pentru o perspectiva cât mai detaliată asupra banilor tăi! </p>
+<div style="width:100%; height: 100%">
+  <div class="card" style="text-align: center">
+    <h5 class="card-title">Bine ai venit pe Budgety!</h5>
+    <p> Ajutorul tău pentru analiza și monitorizarea cheltuielilor</p>
+    <div class="card-body">
+      <p>Poți adăuga cheltuieli, costuri fixe și venituri pentru o perspectiva cât mai detaliată asupra banilor tăi!
+      </p>
+    </div>
   </div>
-</div>
-<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-<div class="row">
-  <div class="col-md-5" style="padding-left: 10%;">
-    <h5>Lista persoane pentru cheltuieli 
-      <button mat-button (click)="peopleInput()">  + </button>
-      <input matInput *ngIf="isPeopleVisible" type="text" placeholder="Introdu nume categorie" (keyup.enter)="addPeople($event)"> 
-    </h5>
-    <table class="table table-hover table-sm" >
-      <tbody>
-        <ng-container *ngFor="let person of people">
-          <tr>
-            <th scope="row">{{person}}</th>
-          </tr>
-        </ng-container>
-      </tbody>
-    </table>
-  </div>
-  <div class="col-md-5" style="padding-left: 10%;">
-    <h5>Lista categorii pentru cheltuieli
-        <button mat-button (click)="categoryInput()">  + </button>
-        <input matInput *ngIf="isCategoryVisible"   type="text" placeholder="Introdu nume persoană" (keyup.enter)="addCategory($event)"> 
-    </h5>
-    <table class="table table-hover table-sm" >
-      <tbody>
-        <ng-container *ngFor="let category of categories">
-          <tr>
-            <th scope="row">{{category}}</th>
-          </tr>
-        </ng-container>
-      </tbody>
-    </table>
+  <div id="container" style="min-width: 20%; height: 400px; margin: 0 auto" *ngIf="isChartAvailable"></div>
+  <div class="row">
+    <div class="col-md-5" style="padding-left: 10%;">
+      <h5>Lista persoane pentru cheltuieli
+        <button mat-button (click)="peopleInput()"> + </button>
+        <input matInput *ngIf="isPeopleVisible" type="text" placeholder="Introdu nume persoană"
+          (keyup.enter)="addPeople($event)">
+      </h5>
+      <table class="table table-hover table-sm">
+        <tbody>
+          <ng-container *ngFor="let person of people">
+            <tr>
+              <th scope="row">{{person}}</th>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-5" style="padding-left: 10%;">
+      <h5>Lista categorii pentru cheltuieli
+        <button mat-button (click)="categoryInput()"> + </button>
+        <input matInput *ngIf="isCategoryVisible" type="text" placeholder="Introdu categorie"
+          (keyup.enter)="addCategory($event)">
+      </h5>
+      <table class="table table-hover table-sm">
+        <tbody>
+          <ng-container *ngFor="let category of categories">
+            <tr>
+              <th scope="row">{{category}}</th>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
